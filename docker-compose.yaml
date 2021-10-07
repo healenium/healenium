@@ -1,0 +1,70 @@
+version: "3.3"
+
+services:
+
+  db:
+    image: postgres:11-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: always
+    environment:
+      - POSTGRES_DB=healenium
+      - POSTGRES_USER=healenium_user
+      - POSTGRES_PASSWORD=YDk2nmNs4s9aCP6K
+    networks:
+      - healenium
+
+  healenium:
+    image: healenium/hlm-backend:3.1.3
+    container_name: healenium
+    ports:
+      - "7878:7878"
+    links:
+      - db
+    environment:
+      - SPRING_CONTAINER_NAME=healenium
+      - SPRING_POSTGRES_DB=healenium
+      - SPRING_POSTGRES_USER=healenium_user
+      - SPRING_POSTGRES_PASSWORD=YDk2nmNs4s9aCP6K
+      - SPRING_POSTGRES_URL=jdbc:postgresql://db:5432/healenium?currentSchema=healenium
+    networks:
+      - healenium
+
+  selector-imitator:
+    image: healenium/hlm-selector-imitator:1
+    restart: on-failure
+    ports:
+      - "8000:8000"
+    networks:
+      - healenium
+
+  hlm-proxy:
+    image: healenium/hlm-proxy:1.0
+    container_name: hlm-proxy
+    ports:
+      - "8085:8085"
+    environment:
+      - "recovery-tries=1"
+      - "score-cap=.6"
+      - "heal-enabled=true"
+      - "serverHost=healenium"
+      - "serverPort=7878"
+      - "imitatePort=8000"
+    networks:
+      - healenium
+
+  hlm-selenium-standalone-xpra:
+    image: healenium/hlm-selenium-4-standalone-xpra:1.0
+    restart: on-failure
+    container_name: hlm-selenium-standalone-xpra
+    ports:
+      - "4444:4444"
+      - "8086:10000"
+    networks:
+      - healenium
+
+networks:
+  healenium:
+#    driver: bridge
