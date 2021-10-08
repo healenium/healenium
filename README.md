@@ -11,7 +11,7 @@ Works with tests written in languages:
 ## How to start
 ### 1. Start docker compose file.
 You can get docker-compose.yaml file by cURL:</br>
-curl -LO https://raw.githubusercontent.com/healenium/healenium/master/docker-compose.yaml
+
 <pre>
 Files hierarchy:
     ˅ db
