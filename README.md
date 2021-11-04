@@ -277,10 +277,9 @@ async function example() {
 }
 
 example();
-</pre>
-### <hr/>
-### 6. Quit method usage.
-<pre>
+
+
 In any case, when you run stacktrace, you will see a link to the report.
 But if you use the quit() method for your driver object, in the stack trace you will see an additional link to the report at the end of the stack trace.
+
 </pre>
