@@ -70,6 +70,12 @@ public class ProxyUsageFirefox {
         driver = new RemoteWebDriver(new URL(nodeURL), options);
     }
 }
+
+***
+In any case, when you run stacktrace, you will see a link to the report.
+But if you use the quit() method for your driver object, in the stack trace you will see
+an additional link to the report at the end of the stack trace.
+
 </pre>
 #### 2.2 Chrome usage example.
 <pre>
@@ -102,6 +108,11 @@ public class ProxyUsageChrome {
         driver = new RemoteWebDriver(new URL(nodeURL), options);
     }
 }
+***
+In any case, when you run stacktrace, you will see a link to the report.
+But if you use the quit() method for your driver object, in the stack trace you will see
+an additional link to the report at the end of the stack trace.
+
 </pre>
 ### <hr/>
 ### 3. C# usage example.
@@ -143,6 +154,12 @@ namespace healenium_net {
         }
     }
 }
+
+***
+In any case, when you run stacktrace, you will see a link to the report.
+But if you use the quit() method for your driver object, in the stack trace you will see
+an additional link to the report at the end of the stack trace.
+
 </pre>
 #### 3.2 Chrome usage example.
 <pre>
@@ -172,6 +189,12 @@ namespace healenium_net {
         }
     }
 }
+
+***
+In any case, when you run stacktrace, you will see a link to the report.
+But if you use the quit() method for your driver object, in the stack trace you will see
+an additional link to the report at the end of the stack trace.
+
 </pre>
 ### <hr/>
 ### 4. Python usage example.
@@ -200,6 +223,11 @@ def get_browser():
 
 current_webdriver = get_browser()
 
+***
+In any case, when you run stacktrace, you will see a link to the report.
+But if you use the quit() method for your driver object, in the stack trace you will see
+an additional link to the report at the end of the stack trace.
+
 </pre>
 #### 4.2 Chrome usage example.
 <pre>
@@ -227,6 +255,11 @@ def get_browser():
 
 current_webdriver = get_browser()
 
+***
+In any case, when you run stacktrace, you will see a link to the report.
+But if you use the quit() method for your driver object, in the stack trace you will see
+an additional link to the report at the end of the stack trace.
+
 </pre>
 ### <hr/>
 ### 5. JavaScript usage example.
@@ -247,6 +280,12 @@ async function example() {
 }
 
 example();
+
+***
+In any case, when you run stacktrace, you will see a link to the report.
+But if you use the quit() method for your driver object, in the stack trace you will see
+an additional link to the report at the end of the stack trace.
+
 </pre>
 #### 5.2 Chrome usage example.
 <pre>
@@ -278,8 +317,9 @@ async function example() {
 
 example();
 
-
+***
 In any case, when you run stacktrace, you will see a link to the report.
-But if you use the quit() method for your driver object, in the stack trace you will see an additional link to the report at the end of the stack trace.
+But if you use the quit() method for your driver object, in the stack trace you will see
+an additional link to the report at the end of the stack trace.
 
 </pre>
