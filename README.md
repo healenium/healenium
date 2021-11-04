@@ -37,7 +37,7 @@ Files hierarchy:
     - hlm-selenium-standalone-xpra
       RUNNING PORT:8086
 </pre>
-### -------------------------------------------------------------------------------------------------------
+### <hr/>
 ### 2. Java usage example.
 #### 2.1 Firefox usage example.
 <pre>
