@@ -103,7 +103,7 @@ public class ProxyUsageChrome {
     }
 }
 </pre>
-### -------------------------------------------------------------------------------------------------------
+### <hr/>
 ### 3. C# usage example.
 <pre>
 Needs to import (Manage NuGet Packages...)
@@ -173,7 +173,7 @@ namespace healenium_net {
     }
 }
 </pre>
-### -------------------------------------------------------------------------------------------------------
+### <hr/>
 ### 4. Python usage example.
 #### 4.1 Firefox usage example.
 <pre>
@@ -228,7 +228,7 @@ def get_browser():
 current_webdriver = get_browser()
 
 </pre>
-### -------------------------------------------------------------------------------------------------------
+### <hr/>
 ### 5. JavaScript usage example.
 #### 5.1 Firefox usage example.
 <pre>
@@ -277,4 +277,10 @@ async function example() {
 }
 
 example();
+</pre>
+### <hr/>
+### 6. Quit method usage.
+<pre>
+In any case, when you run stacktrace, you will see a link to the report.
+But if you use the quit() method for your driver object, in the stack trace you will see an additional link to the report at the end of the stack trace.
 </pre>
