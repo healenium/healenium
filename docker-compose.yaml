@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.9"
 
 services:
 
@@ -17,7 +17,7 @@ services:
       - healenium
 
   healenium:
-    image: healenium/hlm-backend:3.1.4
+    image: healenium/hlm-backend:3.1.5
     container_name: healenium
     ports:
       - "7878:7878"
@@ -34,6 +34,7 @@ services:
 
   selector-imitator:
     image: healenium/hlm-selector-imitator:1
+    container_name: selector-imitator
     restart: on-failure
     ports:
       - "8000:8000"
@@ -41,7 +42,7 @@ services:
       - healenium
 
   hlm-proxy:
-    image: healenium/hlm-proxy:1.0
+    image: healenium/hlm-proxy:0.1.0
     container_name: hlm-proxy
     ports:
       - "8085:8085"
@@ -49,7 +50,7 @@ services:
       - "recovery-tries=1"
       - "score-cap=.6"
       - "heal-enabled=true"
-      - "serverHost=healenium"
+      - "serverHost=localhost"
       - "serverPort=7878"
       - "imitatePort=8000"
     networks:
@@ -60,11 +61,9 @@ services:
     restart: on-failure
     container_name: hlm-selenium-standalone-xpra
     ports:
-      - "4444:4444"
       - "8086:10000"
     networks:
       - healenium
 
 networks:
   healenium:
-#    driver: bridge
