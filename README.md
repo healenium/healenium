@@ -108,6 +108,7 @@ public class ProxyUsageChrome {
         driver = new RemoteWebDriver(new URL(nodeURL), options);
     }
 }
+
 ***
 In any case, when you run stacktrace, you will see a link to the report.
 But if you use the quit() method for your driver object, in the stack trace you will see
