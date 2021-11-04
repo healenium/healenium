@@ -69,27 +69,6 @@ public class ProxyUsageFirefox {
 
         driver = new RemoteWebDriver(new URL(nodeURL), options);
     }
-
-    @Test(priority = 2)
-    void login() {
-        driver.navigate().to("https://healenium.io/sha");
-
-        driver
-                .findElement(By.xpath("//input[@placeholder='E-mail']"))
-                .sendKeys("mail@mail.com");
-
-        driver
-                .findElement(By.xpath("//input[@placeholder='Name']"))
-                .sendKeys("Smith");
-
-        driver
-                .findElement(By.xpath("//input[@placeholder='Phone']"))
-                .sendKeys("987654321");
-
-        driver
-                .findElement(By.xpath("//button[text()='Learn More']"))
-                .click();
-    }
 }
 </pre>
 #### 2.2 Chrome usage example.
@@ -121,28 +100,6 @@ public class ProxyUsageChrome {
         options.addArguments("--no-sandbox");
 
         driver = new RemoteWebDriver(new URL(nodeURL), options);
-    }
-
-    @Test(priority = 2)
-    void login() {
-
-        driver.navigate().to("http://healenium.io/sha");
-
-        driver
-                .findElement(By.xpath("//input[@placeholder='E-mail']"))
-                .sendKeys("mail@mail.com");
-
-        driver
-                .findElement(By.xpath("//input[@placeholder='Name']"))
-                .sendKeys("Smith");
-
-        driver
-                .findElement(By.xpath("//input[@placeholder='Phone']"))
-                .sendKeys("987654321");
-
-        driver
-                .findElement(By.xpath("//button[text()='Learn More']"))
-                .click();
     }
 }
 </pre>
@@ -184,15 +141,6 @@ namespace healenium_net {
             FirefoxOptions optionsFirefox = new FirefoxOptions();
             driverFirefox = new RemoteWebDriver(new Uri(nodeURL), optionsFirefox);
         }
-
-        [Test]
-        public void LoginWebPageFirefox() {
-            driverFirefox.Navigate().GoToUrl("https://healenium.io/sha");
-            driverFirefox.FindElement(By.XPath("//input[@placeholder='E-mail']")).SendKeys("mail@mail.com");
-            driverFirefox.FindElement(By.XPath("//input[@placeholder='Name']")).SendKeys("Smith");
-            driverFirefox.FindElement(By.XPath("//input[@placeholder='Phone']")).SendKeys("987654321");
-            driverFirefox.FindElement(By.XPath("//button[text()='Learn More']")).Click();
-        }
     }
 }
 </pre>
@@ -221,15 +169,6 @@ namespace healenium_net {
             ChromeOptions optionsChrome = new ChromeOptions();
             optionsChrome.AddArguments("--no-sandbox");
             driverChrome = new RemoteWebDriver(new Uri(nodeURL), optionsChrome);
-        }
-
-        [Test]
-        public void LoginWebPageChrome() {
-            driverChrome.Navigate().GoToUrl("http://healenium.io/sha");
-            driverChrome.FindElement(By.XPath("//input[@placeholder='E-mail']")).SendKeys("mail@mail.com");
-            driverChrome.FindElement(By.XPath("//input[@placeholder='Name']")).SendKeys("Smith");
-            driverChrome.FindElement(By.XPath("//input[@placeholder='Phone']")).SendKeys("987654321");
-            driverChrome.FindElement(By.XPath("//button[text()='Learn More']")).Click();
         }
     }
 }
@@ -261,19 +200,6 @@ def get_browser():
 
 current_webdriver = get_browser()
 
-current_webdriver.get("https://healenium.io/sha")
-
-search_input_box_email = current_webdriver.find_element_by_xpath("//input[@placeholder='E-mail']")
-search_input_box_email.send_keys("mail@mail.com")
-
-search_input_box_name = current_webdriver.find_element(By.XPATH, "//input[@placeholder='Name']")
-search_input_box_name.send_keys("Smith")
-
-search_input_box_phone = current_webdriver.find_element(By.XPATH, "//input[@placeholder='Phone']")
-search_input_box_phone.send_keys("987654321")
-
-search_input_box_more = current_webdriver.find_element(By.XPATH, "//button[text()='Learn More']")
-search_input_box_more.click()
 </pre>
 #### 4.2 Chrome usage example.
 <pre>
@@ -301,19 +227,6 @@ def get_browser():
 
 current_webdriver = get_browser()
 
-current_webdriver.get("http://healenium.io/sha")
-
-search_input_box_email = current_webdriver.find_element_by_xpath("//input[@placeholder='E-mail']")
-search_input_box_email.send_keys("mail@mail.com")
-
-search_input_box_name = current_webdriver.find_element(By.XPATH, "//input[@placeholder='Name']")
-search_input_box_name.send_keys("Smith")
-
-search_input_box_phone = current_webdriver.find_element(By.XPATH, "//input[@placeholder='Phone']")
-search_input_box_phone.send_keys("987654321")
-
-search_input_box_more = current_webdriver.find_element(By.XPATH, "//button[text()='Learn More']")
-search_input_box_more.click()
 </pre>
 ### -------------------------------------------------------------------------------------------------------
 ### 5. JavaScript usage example.
@@ -331,12 +244,6 @@ async function example() {
     const NODE_URL = "http://localhost:8085";
 
     let driver = await new Builder().usingServer(NODE_URL).forBrowser("firefox").build();
-
-    await driver.get("https://healenium.io/sha");
-    await driver.findElement(By.xpath("//input[@placeholder='E-mail']")).sendKeys("mail@mail.com");
-    await driver.findElement(By.xpath("//input[@placeholder='Name']")).sendKeys("Smith");
-    await driver.findElement(By.xpath("//input[@placeholder='Phone']")).sendKeys("987654321");
-    await driver.findElement(By.xpath("//button[text()='Learn More']")).click();
 }
 
 example();
@@ -367,12 +274,6 @@ async function example() {
         .withCapabilities(chromeCapabilities);
 
     let driver = await builder.usingServer(NODE_URL).build();
-
-    await driver.get("http://healenium.io/sha");
-    await driver.findElement(By.xpath("//input[@placeholder='E-mail']")).sendKeys("mail@mail.com");
-    await driver.findElement(By.xpath("//input[@placeholder='Name']")).sendKeys("Smith");
-    await driver.findElement(By.xpath("//input[@placeholder='Phone']")).sendKeys("987654321");
-    await driver.findElement(By.xpath("//button[text()='Learn More']")).click();
 }
 
 example();
