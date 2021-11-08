@@ -327,3 +327,7 @@ But if you use the quit() method for your driver object, in the stack trace you 
 an additional link to the report at the end of the stack trace.
 
 </pre>
+
+* [Telegram chat](https://t.me/healenium)
+* [GitHub Issues](https://github.com/healenium/healenium/issues)
+* [YouTube Channel](https://www.youtube.com/channel/UCsZJ0ri-Hp7IA1A6Fgi4Hvg)
