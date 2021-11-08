@@ -2,7 +2,7 @@
 Java project with healenium-proxy usage example.</br>
 Works with tests written in languages:
 <pre>
-    - Java
+    - [Java](#Java)
     - Python
     - C#
     - JavaScript
@@ -37,6 +37,7 @@ Files hierarchy:
     - hlm-selenium-standalone-xpra
       RUNNING PORT:8086
 </pre>
+<a name="Java"></a> 
 ### <hr/>
 ### 2. Java usage example.
 #### 2.1 Firefox usage example.
