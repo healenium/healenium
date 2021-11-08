@@ -3,9 +3,9 @@ Java project with healenium-proxy usage example.</br>
 Works with tests written in languages:
 
 - [Java](#Java)
-- Python
-- C#
-- JavaScript
+- [C#](#C#)
+- [Python](#Python)
+- [JavaScript](#JavaScript)
 
 ## How to start
 ### 1. Start docker compose file.
@@ -115,6 +115,7 @@ But if you use the quit() method for your driver object, in the stack trace you 
 an additional link to the report at the end of the stack trace.
 
 </pre>
+<a name="C#"></a>
 ### <hr/>
 ### 3. C# usage example.
 <pre>
@@ -197,6 +198,7 @@ But if you use the quit() method for your driver object, in the stack trace you 
 an additional link to the report at the end of the stack trace.
 
 </pre>
+<a name="Python"></a>
 ### <hr/>
 ### 4. Python usage example.
 #### 4.1 Firefox usage example.
@@ -262,6 +264,7 @@ But if you use the quit() method for your driver object, in the stack trace you 
 an additional link to the report at the end of the stack trace.
 
 </pre>
+<a name="JavaScript"></a>
 ### <hr/>
 ### 5. JavaScript usage example.
 #### 5.1 Firefox usage example.
