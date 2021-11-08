@@ -2,7 +2,7 @@
 Java project with healenium-proxy usage example.</br>
 Works with tests written in languages:
 
-- [Java](https://github.com/healenium/healenium/tree/update-readme#Java)
+- [Java](#Java)
 - Python
 - C#
 - JavaScript
