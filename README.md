@@ -1,12 +1,11 @@
 # healenium-proxy
 Java project with healenium-proxy usage example.</br>
 Works with tests written in languages:
-<pre>
+
     - ['Java'](https://github.com/healenium/healenium/tree/update-readme#Java)
     - Python
     - C#
     - JavaScript
-</pre>
 
 ## How to start
 ### 1. Start docker compose file.
