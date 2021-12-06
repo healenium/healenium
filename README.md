@@ -104,6 +104,7 @@ public class ProxyUsageChrome {
         ChromeOptions options = new ChromeOptions();
 
         options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
 
         driver = new RemoteWebDriver(new URL(nodeURL), options);
     }
