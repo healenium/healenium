@@ -17,7 +17,7 @@ services:
       - healenium
 
   healenium:
-    image: healenium/hlm-backend:3.2.0
+    image: healenium/hlm-backend:3.2.1
     container_name: healenium
     ports:
       - "7878:7878"
@@ -42,7 +42,7 @@ services:
       - healenium
 
   hlm-proxy:
-    image: healenium/hlm-proxy:0.2.1
+    image: healenium/hlm-proxy:0.2.3
     container_name: hlm-proxy
     ports:
       - "8085:8085"
