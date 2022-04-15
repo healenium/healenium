@@ -17,7 +17,7 @@ services:
       - healenium
 
   healenium:
-    image: healenium/hlm-backend:3.2.1
+    image: healenium/hlm-backend:3.2.2
     container_name: healenium
     ports:
       - "7878:7878"
@@ -33,7 +33,7 @@ services:
       - healenium
 
   selector-imitator:
-    image: healenium/hlm-selector-imitator:1
+    image: healenium/hlm-selector-imitator:1.1
     container_name: selector-imitator
     restart: on-failure
     ports:
@@ -42,26 +42,31 @@ services:
       - healenium
 
   hlm-proxy:
-    image: healenium/hlm-proxy:0.2.3
+    image: healenium/hlm-proxy:0.2.5
     container_name: hlm-proxy
+    volumes:
+      - docker-log-volume:/var/log/dockerlogs
     ports:
       - "8085:8085"
     environment:
       - "recovery-tries=1"
       - "score-cap=.6"
       - "heal-enabled=true"
-      - "serverHost=localhost"
-      - "serverPort=7878"
-      - "imitatePort=8000"
+#      - SELENIUM_HOST=hlm-selenium-webview
+#      - HEALENIUM_HOST=healenium
+#      - IMITATE_HOST=selector-imitator
     networks:
       - healenium
 
-  hlm-selenium-standalone-xpra:
-    image: healenium/hlm-selenium-4-standalone-xpra:1.0
+  hlm-selenium-webview:
+    image: healenium/hlm-selenium-4-standalone-tigervnc:firefox98.0.1_chrome99.0.4844.82_edge99.0.1150.46
     restart: on-failure
-    container_name: hlm-selenium-standalone-xpra
+    container_name: hlm-selenium-webview
     ports:
-      - "8086:10000"
+      - "8086:6080"
+      - "4444:4444"
+    volumes:
+      - docker-log-volume:/var/log/dockerlogs
     networks:
       - healenium
 
