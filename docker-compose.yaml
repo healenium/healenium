@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.3"
 
 services:
 
@@ -72,3 +72,7 @@ services:
 
 networks:
   healenium:
+
+volumes:
+  docker-log-volume:
+    driver: local
