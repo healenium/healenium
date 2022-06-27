@@ -21,7 +21,7 @@ Files hierarchy:
 ###In terminal go to the folder with <b>docker-compose.yaml</b> and run command `docker-compose up -d`
 ###    docker compose file contains modules (you can check them in docker Containers / Apps):
 <pre>
-    - db
+    - postgres-db
       RUNNING PORT:5432
 
     - selector-imitator
@@ -33,8 +33,11 @@ Files hierarchy:
     - hlm-proxy
       RUNNING PORT:8085
 
-    - hlm-selenium-standalone-xpra
-      RUNNING PORT:8086
+    - hlm-selenoid
+      RUNNING PORT:4444
+    
+    - selenoid-ui
+      RUNNING PORT:8080
 </pre>
 <a name="Java"></a> 
 ### <hr/>
