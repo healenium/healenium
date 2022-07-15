@@ -42,11 +42,11 @@ docker pull selenoid/vnc:firefox_101.0
 
 URL link:
 ```
-x
+https://raw.githubusercontent.com/healenium/healenium/master/db/sql/init.sql
 ```
 cURL command:
 ```
-x
+curl https://raw.githubusercontent.com/healenium/healenium/master/db/sql/init.sql -o init.sql
 ```
 ### 1.2 If you want work with Healenium and Selenium Hub
 You can get docker-compose.yaml file by cURL:</br>
