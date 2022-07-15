@@ -53,10 +53,10 @@ services:
       - RECOVERY_TRIES=1
       - SCORE_CAP=.6
       - HEAL_ENABLED=true
-      - SELENIUM_HOST=hlm-selenoid
+      - SELENIUM_HOST=selenium-hub
       - HEALENIUM_HOST=healenium
       - IMITATE_HOST=selector-imitator
-      - SELENIUM_URL=/wd/hub
+      - SELENIUM_URL=/
     networks:
       - healenium
 
