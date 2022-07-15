@@ -102,6 +102,10 @@ cURL command:
 ```
 curl https://raw.githubusercontent.com/healenium/healenium/master/db/sql/init.sql -o init.sql
 ```
+1.1.3 To start Healenium run the command when you are in the same directory as the file:
+```
+docker-compose -f docker-compose-selenium-v3.yaml up -d
+```
 ### As a result, you'll have the same structure:
 ```
 your-project-name
