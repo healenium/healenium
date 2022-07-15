@@ -1,410 +1,109 @@
-# healenium-proxy
-Java project with healenium-proxy usage example.
+# Healenium
 
-Works with tests written in languages:
+[![Docker Pulls](https://img.shields.io/docker/pulls/healenium/hlm-backend.svg?maxAge=25920)](https://hub.docker.com/u/healenium)
+[![License](https://img.shields.io/badge/license-Apache-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-- [Java](#Java)
-- [C#](#C#)
-- [Python](#Python)
-- [JavaScript](#JavaScript)
+### Table of Contents
 
-## How to start (you have 2 work options: with Selenoid UI or Selenium Hub)
-### 1. Start docker compose file.
-### 1.1 If you want work with Healenium and Selenoid UI
-1.1.1 You must get docker-compose.yaml file by:
+[Overall information](#overall-information)
 
-URL link:
-```
-https://raw.githubusercontent.com/healenium/healenium/master/docker-compose.yaml
-```
-cURL command:
-```
-curl https://raw.githubusercontent.com/healenium/healenium/master/docker-compose.yaml -o docker-compose.yaml
-```
-1.1.2 Additionally get browsers.json file by:
+[Healenium installation](#healenium-installation)
+* [Healenium with Selenoid](#run-healenium-with-selenoid)
+* [Healenium with Selenium-Grid](#run-healenium-with-selenium-grid)
 
-URL link:
+[Language Examples](#language-examples)
+* [Java](#java)
+* [Python](#python)
+* [C#](#c#)
+* [JavaScript](#javascript)
+
+### Overall information
+Self-healing framework based on Selenium and able to use all Selenium supported languages like Java/Python/JS/C#
+Healenium acts as proxy between client and selenium server.
+
+`Docker-compose` includes the following services:
+- `postgres-db` (PostgreSQL database to store etalon selector / healing / report)
+- `hlm-proxy` (Proxy client request to Selenium server)
+- `hlm-bacand` (CRUD service)
+- `selector imitator` (Convert healed locator to convenient format)
+- `selenoid`/`selenium-grid` (Selenium server)
+
+### Healenium installation
+
+Clone Healenium repository:
+```sh
+git clone https://github.com/healenium/healenium.git
 ```
-https://raw.githubusercontent.com/healenium/healenium/master/browsers.json
-```
-cURL command:
-```
-curl https://raw.githubusercontent.com/healenium/healenium/master/browsers.json -o browsers.json
-```
-1.1.3 Manually pull docker images with version (chrome_102.0 or firefox_101.0) specified in browsers.json
-```
+
+#### Run Healenium with Selenoid
+
+> Note: `browsers.json` consists of target browsers and appropriate versions.
+> Before run healenium you have to manually pull selenoid browser docker images with version specified in browsers.json
+
+Example pull selenoid chrome image:
+```sh
 docker pull selenoid/vnc:chrome_102.0
 ```
-```
-docker pull selenoid/vnc:firefox_101.0
-```
-1.1.4 Create /db/sql folder on the same level in your project and add file init.sql
+Full list of browser images you can find [here](https://hub.docker.com/u/selenoid)
 
-URL link:
-```
-https://raw.githubusercontent.com/healenium/healenium/master/db/sql/init.sql
-```
-cURL command:
-```
-curl https://raw.githubusercontent.com/healenium/healenium/master/db/sql/init.sql -o init.sql
-```
-1.1.5 To start Healenium run the command when you are in the same directory as the file:
-```
+Run healenium with Selenoid:
+```sh
 docker-compose up -d
 ```
-### As a result, you'll have the same structure:
-```
-your-project-name
-    |__db
-        |__sql
-            |__init.sql
-    |__browsers.json
-    |__docker-compose.yaml
-```
-### docker compose file contains modules (you can check them in docker Containers / Apps)
-```
-- postgres-db
-  RUNNING PORT:5432
 
-- healenium
-  RUNNING PORT:7878
-
-- selector-imitator
-  RUNNING PORT:8000
-
-- hlm-proxy
-  RUNNING PORT:8085
-
-- hlm-selenoid
-  RUNNING PORT:4444
-
-- selenoid-ui
-  RUNNING PORT:8080
-```
-### 1.2 If you want work with Healenium and Selenium Hub
-1.1.1 You must get docker-compose-selenium-v3.yaml file by:
-
-URL link:
-```
-https://raw.githubusercontent.com/healenium/healenium/master/docker-compose-selenium-v3.yaml
-```
-cURL command:
-```
-curl https://raw.githubusercontent.com/healenium/healenium/master/docker-compose-selenium-v3.yaml -o docker-compose-selenium-v3.yaml
-```
-1.1.2 Create /db/sql folder on the same level in your project and add file init.sql
-
-URL link:
-```
-https://raw.githubusercontent.com/healenium/healenium/master/db/sql/init.sql
-```
-cURL command:
-```
-curl https://raw.githubusercontent.com/healenium/healenium/master/db/sql/init.sql -o init.sql
-```
-1.1.3 To start Healenium run the command when you are in the same directory as the file:
-```
+#### Run Healenium with Selenium-Grid:
+```sh
 docker-compose -f docker-compose-selenium-v3.yaml up -d
 ```
-### As a result, you'll have the same structure:
+
+### Language examples
+
 ```
-your-project-name
-    |__db
-        |__sql
-            |__init.sql
-    |__docker-compose-selenium-v3.yaml
+    /**
+    * "http://127.0.0.1:8085" OR "http://localhost:8085" if you are using locally running proxy server
+    *
+    * if you want to use a remote proxy server,
+    * specify the ip address of this server - "http://remote_ip_address:8085"
+    */
 ```
-### docker compose file contains modules (you can check them in docker Containers / Apps)
+
+###### Java:
+```java
+    String nodeURL = "http://localhost:8085";
+
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--no-sandbox");
+    options.addArguments("--disable-dev-shm-usage");
+
+    WebDriver driver = new RemoteWebDriver(new URL(nodeURL), options);
 ```
-- postgres-db
-  RUNNING PORT:5432
 
-- healenium
-  RUNNING PORT:7878
-
-- selector-imitator
-  RUNNING PORT:8000
-
-- hlm-proxy
-  RUNNING PORT:8085
-
-- node-chrome
-
-- node-edge
-
-- node-firefox
-
-- selenium-hub
-  RUNNING PORT:4444
-```
-<a name="Java"></a> 
-### <hr/>
-### 2. Java usage example.
-#### 2.1 Firefox usage example.
-<pre>
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.Test;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
-public class ProxyUsageFirefox {
-
-    static WebDriver driver;
-
-    @Test(priority = 1)
-    void setup() throws MalformedURLException {
-
-        /**
-         * "http://127.0.0.1:8085" OR "http://localhost:8085" if you are using locally running proxy server
-         *
-         * if you want to use a remote proxy server,
-         * specify the ip address of this server - "http://remote_ip_address:8085"
-         */
-        String nodeURL = "http://localhost:8085";
-
-        FirefoxOptions options = new FirefoxOptions();
-
-        driver = new RemoteWebDriver(new URL(nodeURL), options);
-    }
-}
-
-***
-In any case, when you run stacktrace, you will see a link to the report.
-But if you use the quit() method for your driver object, in the stack trace you will see
-an additional link to the report at the end of the stack trace.
-
-</pre>
-#### 2.2 Chrome usage example.
-<pre>
-import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.Test;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
-public class ProxyUsageChrome {
-    private static RemoteWebDriver driver;
-
-    @Test(priority = 1)
-    void setup() throws MalformedURLException {
-
-        /**
-         * "http://127.0.0.1:8085" OR "http://localhost:8085" if you are using locally running proxy server
-         *
-         * if you want to use a remote proxy server,
-         * specify the ip address of this server - "http://remote_ip_address:8085"
-         */
-        String nodeURL = "http://localhost:8085";
-
-        ChromeOptions options = new ChromeOptions();
-
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-
-        driver = new RemoteWebDriver(new URL(nodeURL), options);
-    }
-}
-
-***
-In any case, when you run stacktrace, you will see a link to the report.
-But if you use the quit() method for your driver object, in the stack trace you will see
-an additional link to the report at the end of the stack trace.
-
-</pre>
-<a name="C#"></a>
-### <hr/>
-### 3. C# usage example.
-<pre>
-Needs to import (Manage NuGet Packages...)
-    - NUnit 3.13.2
-    - NUnit.ConsoleRunner 3.12.0
-    - NUnit3TestAdapter 4.0.0
-    - RemoteWebDriverOptions 1.0.0
-    - Selenium.WebDriver 3.141.0
-    - Selenium.WebDriver.ChromeDriver 92.0.4515.10700
-    - Selenium.WebDriver.GeckoDriver 0.29.1
-    - Selenium.WebDriverBackedSelenium 3.141.0
-</pre>
-#### 3.1 Firefox usage example.
-<pre>
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Firefox;
-using System;
-
-namespace healenium_net {
-    class ProxyUsageFirefox {
-        RemoteWebDriver driverFirefox;
-
-        /**
-         * "http://127.0.0.1:8085" OR "http://localhost:8085" if you are using locally running proxy server
-         *
-         * if you want to use a remote proxy server,
-         * specify the ip address of this server - "http://remote_ip_address:8085"
-         */
-        private readonly String nodeURL = "http://localhost:8085";
-
-        [SetUp]
-        public void Init() {
-            FirefoxOptions optionsFirefox = new FirefoxOptions();
-            driverFirefox = new RemoteWebDriver(new Uri(nodeURL), optionsFirefox);
-        }
-    }
-}
-
-***
-In any case, when you run stacktrace, you will see a link to the report.
-But if you use the quit() method for your driver object, in the stack trace you will see
-an additional link to the report at the end of the stack trace.
-
-</pre>
-#### 3.2 Chrome usage example.
-<pre>
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
-using System;
-
-namespace healenium_net {
-    class ProxyUsageChrome {
-        RemoteWebDriver driverChrome;
-
-        /**
-         * "http://127.0.0.1:8085" OR "http://localhost:8085" if you are using locally running proxy server
-         *
-         * if you want to use a remote proxy server,
-         * specify the ip address of this server - "http://remote_ip_address:8085"
-         */
-        private readonly String nodeURL = "http://localhost:8085";
-
-        [SetUp]
-        public void Init() {
-            ChromeOptions optionsChrome = new ChromeOptions();
-            optionsChrome.AddArguments("--no-sandbox");
-            driverChrome = new RemoteWebDriver(new Uri(nodeURL), optionsChrome);
-        }
-    }
-}
-
-***
-In any case, when you run stacktrace, you will see a link to the report.
-But if you use the quit() method for your driver object, in the stack trace you will see
-an additional link to the report at the end of the stack trace.
-
-</pre>
-<a name="Python"></a>
-### <hr/>
-### 4. Python usage example.
-#### 4.1 Firefox usage example.
-<pre>
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-# 
-# "http://127.0.0.1:8085" OR "http://localhost:8085" if you are using locally running proxy server
-#
-# if you want to use a remote proxy server,
-# specify the ip address of this server - "http://remote_ip_address:8085"
-#
-nodeURL = "http://localhost:8085"
-
-def get_browser():
-    options = webdriver.FirefoxOptions()
-    browser = webdriver.Remote(
-        command_executor=nodeURL,
-        desired_capabilities=webdriver.DesiredCapabilities.FIREFOX,
-        options=options,
-    )
-    return browser
-
-
-current_webdriver = get_browser()
-
-***
-In any case, when you run stacktrace, you will see a link to the report.
-But if you use the quit() method for your driver object, in the stack trace you will see
-an additional link to the report at the end of the stack trace.
-
-</pre>
-#### 4.2 Chrome usage example.
-<pre>
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-# 
-# "http://127.0.0.1:8085" OR "http://localhost:8085" if you are using locally running proxy server
-#
-# if you want to use a remote proxy server,
-# specify the ip address of this server - "http://remote_ip_address:8085"
-#
-nodeURL = "http://localhost:8085"
-
-def get_browser():
+###### Python
+```py
+    nodeURL = "http://localhost:8085"
+    
     options = webdriver.ChromeOptions()
     options.add_argument('--no-sandbox')
-    browser = webdriver.Remote(
+    
+    current_webdriver = webdriver.Remote(
         command_executor=nodeURL,
         desired_capabilities=webdriver.DesiredCapabilities.CHROME,
         options=options,
     )
-    return browser
+```
 
+###### C#
+```csharp
+    String nodeURL = "http://localhost:8085";
 
-current_webdriver = get_browser()
+    ChromeOptions optionsChrome = new ChromeOptions();
+    optionsChrome.AddArguments("--no-sandbox");
+    
+    RemoteWebDriver driverChrome = new RemoteWebDriver(new Uri(nodeURL), optionsChrome);
+```
 
-***
-In any case, when you run stacktrace, you will see a link to the report.
-But if you use the quit() method for your driver object, in the stack trace you will see
-an additional link to the report at the end of the stack trace.
-
-</pre>
-<a name="JavaScript"></a>
-### <hr/>
-### 5. JavaScript usage example.
-#### 5.1 Firefox usage example.
-<pre>
-const {By,Key,Builder} = require("selenium-webdriver");
-
-async function example() {
-    /**
-     * "http://127.0.0.1:8085" OR "http://localhost:8085" if you are using locally running proxy server
-     *
-     * if you want to use a remote proxy server,
-     * specify the ip address of this server - "http://remote_ip_address:8085"
-     */
-    const NODE_URL = "http://localhost:8085";
-
-    let driver = await new Builder().usingServer(NODE_URL).forBrowser("firefox").build();
-}
-
-example();
-
-***
-In any case, when you run stacktrace, you will see a link to the report.
-But if you use the quit() method for your driver object, in the stack trace you will see
-an additional link to the report at the end of the stack trace.
-
-</pre>
-#### 5.2 Chrome usage example.
-<pre>
-const {By,Key,Builder} = require("selenium-webdriver");
-const selenium = require("selenium-webdriver");
-
-async function example() {
-    /**
-     * "http://127.0.0.1:8085" OR "http://localhost:8085" if you are using locally running proxy server
-     *
-     * if you want to use a remote proxy server,
-     * specify the ip address of this server - "http://remote_ip_address:8085"
-     */
+###### JavaScript
+```javascript
     const NODE_URL = "http://localhost:8085";
 
     let args = [
@@ -419,16 +118,8 @@ async function example() {
         .withCapabilities(chromeCapabilities);
 
     let driver = await builder.usingServer(NODE_URL).build();
-}
+```
 
-example();
-
-***
-In any case, when you run stacktrace, you will see a link to the report.
-But if you use the quit() method for your driver object, in the stack trace you will see
-an additional link to the report at the end of the stack trace.
-
-</pre>
 
 ## Community / Support
 
