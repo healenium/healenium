@@ -8,7 +8,7 @@ Works with tests written in languages:
 - [Python](#Python)
 - [JavaScript](#JavaScript)
 
-## How to start
+## How to start (you have 2 work options: with Selenoid UI or Selenium Hub)
 ### 1. Start docker compose file.
 ### 1.1 If you want work with Healenium and Selenoid UI
 1.1.1 You must get docker-compose.yaml file by:
