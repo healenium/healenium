@@ -1,5 +1,5 @@
 # healenium-proxy
-Java project with healenium-proxy usage example.
+Java project with healenium-proxy usage example.```sh
 Works with tests written in languages:
 
 - [Java](#Java)
