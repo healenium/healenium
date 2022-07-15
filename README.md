@@ -15,10 +15,12 @@ You must get docker-compose.yaml file by:
 
 URL link:
 ```
-vksvkl
+https://raw.githubusercontent.com/healenium/healenium/master/docker-compose.yaml
 ```
 cURL command:
-
+```
+curl https://raw.githubusercontent.com/healenium/healenium/master/docker-compose.yaml -o docker-compose.yaml
+```
 Additionally get browsers.json file by:
 
 URL link:
