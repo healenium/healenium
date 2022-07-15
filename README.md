@@ -48,6 +48,14 @@ cURL command:
 ```
 curl https://raw.githubusercontent.com/healenium/healenium/master/db/sql/init.sql -o init.sql
 ```
+###As a result, you'll have the same structure:
+```
+x
+```
+###docker compose file contains modules (you can check them in docker Containers / Apps)
+```
+x
+```
 ### 1.2 If you want work with Healenium and Selenium Hub
 You can get docker-compose.yaml file by cURL:</br>
 
