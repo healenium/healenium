@@ -134,40 +134,6 @@ your-project-name
 - selenoid-ui
   RUNNING PORT:8080
 ```
-
-
-
-
-You can get docker-compose.yaml file by cURL:</br>
-
-<pre>
-Files hierarchy:
-    ˅ db
-        ˅ sql
-            init.sql
-    docker-compose.yaml
-</pre>
-###In terminal go to the folder with <b>docker-compose.yaml</b> and run command `docker-compose up -d`
-###    docker compose file contains modules (you can check them in docker Containers / Apps):
-<pre>
-    - postgres-db
-      RUNNING PORT:5432
-
-    - selector-imitator
-      RUNNING PORT:8000
-
-    - healenium
-      RUNNING PORT:7878
-
-    - hlm-proxy
-      RUNNING PORT:8085
-
-    - hlm-selenoid
-      RUNNING PORT:4444
-    
-    - selenoid-ui
-      RUNNING PORT:8080
-</pre>
 <a name="Java"></a> 
 ### <hr/>
 ### 2. Java usage example.
