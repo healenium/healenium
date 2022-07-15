@@ -59,7 +59,23 @@ your-project-name
 ```
 ### docker compose file contains modules (you can check them in docker Containers / Apps)
 ```
-x
+- postgres-db
+  RUNNING PORT:5432
+
+- healenium
+  RUNNING PORT:7878
+
+- selector-imitator
+  RUNNING PORT:8000
+
+- hlm-proxy
+  RUNNING PORT:8085
+
+- hlm-selenoid
+  RUNNING PORT:4444
+
+- selenoid-ui
+  RUNNING PORT:8080
 ```
 ### 1.2 If you want work with Healenium and Selenium Hub
 
