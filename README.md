@@ -50,7 +50,12 @@ curl https://raw.githubusercontent.com/healenium/healenium/master/db/sql/init.sq
 ```
 ### As a result, you'll have the same structure:
 ```
-x
+your-project-name
+    |__db
+        |__sql
+            |__init.sql
+    |__browsers.json
+    |__docker-compose.yaml
 ```
 ### docker compose file contains modules (you can check them in docker Containers / Apps)
 ```
