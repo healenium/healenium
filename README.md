@@ -38,6 +38,16 @@ docker pull selenoid/vnc:chrome_102.0
 ```
 docker pull selenoid/vnc:firefox_101.0
 ```
+1.1.4 Create /db/sql folder on the same level in your project and add file init.sql
+
+URL link:
+```
+x
+```
+cURL command:
+```
+x
+```
 ### 1.2 If you want work with Healenium and Selenium Hub
 You can get docker-compose.yaml file by cURL:</br>
 
