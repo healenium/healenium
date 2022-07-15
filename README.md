@@ -48,6 +48,8 @@ cURL command:
 ```
 curl https://raw.githubusercontent.com/healenium/healenium/master/db/sql/init.sql -o init.sql
 ```
+1.1.5 To start Healenium run command:
+```docker-compose up -d```
 ### As a result, you'll have the same structure:
 ```
 your-project-name
@@ -78,7 +80,54 @@ your-project-name
   RUNNING PORT:8080
 ```
 ### 1.2 If you want work with Healenium and Selenium Hub
+1.1.1 You must get docker-compose-selenium-v3.yaml file by:
 
+URL link:
+```
+https://raw.githubusercontent.com/healenium/healenium/master/docker-compose-selenium-v3.yaml
+```
+cURL command:
+```
+curl https://raw.githubusercontent.com/healenium/healenium/master/docker-compose-selenium-v3.yaml -o docker-compose-selenium-v3.yaml
+```
+1.1.2 Create /db/sql folder on the same level in your project and add file init.sql
+
+URL link:
+```
+https://raw.githubusercontent.com/healenium/healenium/master/db/sql/init.sql
+```
+cURL command:
+```
+curl https://raw.githubusercontent.com/healenium/healenium/master/db/sql/init.sql -o init.sql
+```
+### As a result, you'll have the same structure:
+```
+your-project-name
+    |__db
+        |__sql
+            |__init.sql
+    |__docker-compose-selenium-v3.yaml
+```
+### docker compose file contains modules (you can check them in docker Containers / Apps)
+```
+- postgres-db
+  RUNNING PORT:5432
+
+- healenium
+  RUNNING PORT:7878
+
+- selector-imitator
+  RUNNING PORT:8000
+
+- hlm-proxy
+  RUNNING PORT:8085
+
+- hlm-selenoid
+  RUNNING PORT:4444
+
+- selenoid-ui
+  RUNNING PORT:8080
+```
 
 
 
