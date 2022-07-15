@@ -24,9 +24,13 @@ curl https://raw.githubusercontent.com/healenium/healenium/master/docker-compose
 Additionally get browsers.json file by:
 
 URL link:
-
+```
+https://raw.githubusercontent.com/healenium/healenium/master/docker-compose-selenium-v3.yaml
+```
 cURL command:
-
+```
+curl https://raw.githubusercontent.com/healenium/healenium/master/docker-compose-selenium-v3.yaml -o docker-compose-selenium-v3.yaml
+```
 ### 1.2 If you want work with Healenium and Selenium Hub
 You can get docker-compose.yaml file by cURL:</br>
 
