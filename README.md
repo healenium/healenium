@@ -11,7 +11,7 @@ Works with tests written in languages:
 ## How to start
 ### 1. Start docker compose file.
 ### 1.1 If you want work with Healenium and Selenoid UI
-You must get docker-compose.yaml file by:
+1.1.1 You must get docker-compose.yaml file by:
 
 URL link:
 ```
@@ -21,7 +21,7 @@ cURL command:
 ```
 curl https://raw.githubusercontent.com/healenium/healenium/master/docker-compose.yaml -o docker-compose.yaml
 ```
-Additionally get browsers.json file by:
+1.1.2 Additionally get browsers.json file by:
 
 URL link:
 ```
@@ -31,7 +31,7 @@ cURL command:
 ```
 curl https://raw.githubusercontent.com/healenium/healenium/master/docker-compose-selenium-v3.yaml -o docker-compose-selenium-v3.yaml
 ```
-Manually pull docker images with version (chrome_102.0 or firefox_101.0) specified in browsers.json
+1.1.3 Manually pull docker images with version (chrome_102.0 or firefox_101.0) specified in browsers.json
 ```
 docker pull selenoid/vnc:chrome_102.0
 ```
