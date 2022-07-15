@@ -25,11 +25,11 @@ curl https://raw.githubusercontent.com/healenium/healenium/master/docker-compose
 
 URL link:
 ```
-https://raw.githubusercontent.com/healenium/healenium/master/docker-compose-selenium-v3.yaml
+https://raw.githubusercontent.com/healenium/healenium/master/browsers.json
 ```
 cURL command:
 ```
-curl https://raw.githubusercontent.com/healenium/healenium/master/docker-compose-selenium-v3.yaml -o docker-compose-selenium-v3.yaml
+curl https://raw.githubusercontent.com/healenium/healenium/master/browsers.json -o browsers.json
 ```
 1.1.3 Manually pull docker images with version (chrome_102.0 or firefox_101.0) specified in browsers.json
 ```
@@ -57,6 +57,11 @@ x
 x
 ```
 ### 1.2 If you want work with Healenium and Selenium Hub
+
+
+
+
+
 You can get docker-compose.yaml file by cURL:</br>
 
 <pre>
