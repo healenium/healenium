@@ -76,7 +76,7 @@ services:
       - healenium
 
   selenoid-ui:
-    image: aerokube/selenoid-ui:1.10.4
+    image: aerokube/selenoid-ui:1.10.5
     container_name: selenoid-ui
     restart: on-failure
     ports:
