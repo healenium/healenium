@@ -128,11 +128,14 @@ your-project-name
 - hlm-proxy
   RUNNING PORT:8085
 
-- hlm-selenoid
-  RUNNING PORT:4444
+- node-chrome
 
-- selenoid-ui
-  RUNNING PORT:8080
+- node-edge
+
+- node-firefox
+
+- selenium-hub
+  RUNNING PORT:4444
 ```
 <a name="Java"></a> 
 ### <hr/>
