@@ -53,7 +53,7 @@ docker-compose up -d
 
 #### Run Healenium with Selenium-Grid:
 ```sh
-docker-compose -f docker-compose-selenium-v3.yaml up -d
+docker-compose -f docker-compose-selenium-grid.yaml up -d
 ```
 
 ### Language examples
