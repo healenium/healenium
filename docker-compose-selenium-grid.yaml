@@ -3,7 +3,7 @@ version: "3.9"
 services:
 
   postgres-db:
-    image: postgres:14.2-bullseye
+    image: postgres:11-alpine
     container_name: postgres-db
     restart: always
     ports:
