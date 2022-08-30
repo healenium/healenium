@@ -18,7 +18,7 @@ services:
       - healenium
 
   healenium:
-    image: healenium/hlm-backend:3.2.3
+    image: healenium/hlm-backend:3.2.4
     container_name: healenium
     restart: on-failure
     ports:
@@ -31,6 +31,7 @@ services:
       - SPRING_POSTGRES_USER=healenium_user
       - SPRING_POSTGRES_PASSWORD=YDk2nmNs4s9aCP6K
       - SPRING_POSTGRES_DB_HOST=postgres-db
+      - KEY_SELECTOR_URL=true
     networks:
       - healenium
 
