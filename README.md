@@ -8,14 +8,12 @@
 [Overall information](#overall-information)
 
 [Healenium installation](#healenium-installation)
-* [Healenium with Selenoid](#run-healenium-with-selenoid)
-* [Healenium with Selenium-Grid](#run-healenium-with-selenium-grid)
+* [Healenium with Mobitru](#run-healenium-with-mobitru)
 
 [Language Examples](#language-examples)
 * [Java](#java)
 * [Python](#python)
 * [C#](#c#)
-* [JavaScript](#javascript)
 
 ### Overall information
 Self-healing framework based on Selenium and able to use all Selenium supported languages like Java/Python/JS/C#
@@ -24,7 +22,7 @@ Healenium acts as proxy between client and selenium server.
 `Docker-compose` includes the following services:
 - `postgres-db` (PostgreSQL database to store etalon selector / healing / report)
 - `hlm-proxy` (Proxy client request to Selenium server)
-- `hlm-bacand` (CRUD service)
+- `hlm-backend` (CRUD service)
 - `selector imitator` (Convert healed locator to convenient format)
 - `selenoid`/`selenium-grid` (Selenium server)
 
@@ -32,28 +30,17 @@ Healenium acts as proxy between client and selenium server.
 
 Clone Healenium repository:
 ```sh
-git clone https://github.com/healenium/healenium.git
+git clone -b mobitru https://github.com/healenium/healenium.git
 ```
 
-#### Run Healenium with Selenoid
+#### Run Healenium with Mobitru
 
-> Note: `browsers.json` consists of target browsers and appropriate versions.
-> Before run healenium you have to manually pull selenoid browser docker images with version specified in browsers.json
+> Note: `.env` consists of Mobitru credentials: PROJECT_NAME, API_KEY, APPIUM_HUB.
+> Before run healenium you have to specify your own in the `.env`
 
-Example pull selenoid chrome image:
-```sh
-docker pull selenoid/vnc:chrome_102.0
-```
-Full list of browser images you can find [here](https://hub.docker.com/u/selenoid)
-
-Run healenium with Selenoid:
+Run healenium:
 ```sh
 docker-compose up -d
-```
-
-#### Run Healenium with Selenium-Grid:
-```sh
-docker-compose -f docker-compose-selenium-grid.yaml up -d
 ```
 
 ### Language examples
@@ -71,24 +58,24 @@ docker-compose -f docker-compose-selenium-grid.yaml up -d
 ```java
     String nodeURL = "http://localhost:8085";
 
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("--no-sandbox");
-    options.addArguments("--disable-dev-shm-usage");
+    options.setCapability("platformVersion", PLATFORM_VERSION);
+    options.setCapability("browserName", BROWSER_NAME);
+    options.setCapability("deviceName", DEVICE_NAME);
 
-    WebDriver driver = new RemoteWebDriver(new URL(nodeURL), options);
+    AppiumDriver driver = new AndroidDriver(new URL(nodeURL), options);
 ```
 
 ###### Python
 ```py
     nodeURL = "http://localhost:8085"
     
-    options = webdriver.ChromeOptions()
-    options.add_argument('--no-sandbox')
+    options.setCapability("platformVersion", PLATFORM_VERSION);
+    options.setCapability("browserName", BROWSER_NAME);
+    options.setCapability("deviceName", DEVICE_NAME);
     
     current_webdriver = webdriver.Remote(
         command_executor=nodeURL,
-        desired_capabilities=webdriver.DesiredCapabilities.CHROME,
-        options=options,
+        options=options
     )
 ```
 
@@ -96,28 +83,11 @@ docker-compose -f docker-compose-selenium-grid.yaml up -d
 ```csharp
     String nodeURL = "http://localhost:8085";
 
-    ChromeOptions optionsChrome = new ChromeOptions();
-    optionsChrome.AddArguments("--no-sandbox");
+    options.setCapability("platformVersion", PLATFORM_VERSION);
+    options.setCapability("browserName", BROWSER_NAME);
+    options.setCapability("deviceName", DEVICE_NAME);
     
-    RemoteWebDriver driverChrome = new RemoteWebDriver(new Uri(nodeURL), optionsChrome);
-```
-
-###### JavaScript
-```javascript
-    const NODE_URL = "http://localhost:8085";
-
-    let args = [
-        "--no-sandbox"
-    ];
-
-    let chromeCapabilities = selenium.Capabilities.chrome()
-        .set('chromeOptions', { args });
-
-    let builder = new selenium.Builder()
-        .forBrowser('chrome')
-        .withCapabilities(chromeCapabilities);
-
-    let driver = await builder.usingServer(NODE_URL).build();
+    AppiumDriver driver = new AppiumDriver(new Uri(nodeURL), optionsChrome);
 ```
 
 
