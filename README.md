@@ -36,7 +36,16 @@ git clone -b mobitru https://github.com/healenium/healenium.git
 #### Run Healenium with Mobitru
 
 > Note: `.env` consists of Mobitru credentials: PROJECT_NAME, API_KEY, APPIUM_HUB.
+
 > Before run healenium you have to specify your own in the `.env`
+
+```dotenv
+#Please set keys without ""
+
+PROJECT_NAME=<your_project_name>
+API_KEY=<your_api_key>
+APPIUM_HUB=app.mobitru.com
+```
 
 Run healenium:
 ```sh
