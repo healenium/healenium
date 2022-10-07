@@ -24,7 +24,7 @@ Healenium acts as proxy between client and selenium server.
 `Docker-compose` includes the following services:
 - `postgres-db` (PostgreSQL database to store etalon selector / healing / report)
 - `hlm-proxy` (Proxy client request to Selenium server)
-- `hlm-bacand` (CRUD service)
+- `hlm-backend` (CRUD service)
 - `selector imitator` (Convert healed locator to convenient format)
 - `selenoid`/`selenium-grid` (Selenium server)
 
