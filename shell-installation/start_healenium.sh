@@ -16,9 +16,7 @@ pip install -r healenium-selector-imitator/requirements.txt
 
 if [[ $OSTYPE == 'msys'* ]];
 then
-  echo win
   python healenium-selector-imitator/app.py
 else
-  echo unix
   python3 healenium-selector-imitator/app.py
 fi
