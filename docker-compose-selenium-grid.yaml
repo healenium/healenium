@@ -45,7 +45,7 @@ services:
       - healenium
 
   hlm-proxy:
-    image: healenium/hlm-proxy:1.1.0
+    image: healenium/hlm-proxy:1.2.0
     container_name: hlm-proxy
     restart: on-failure
     ports:
@@ -54,10 +54,11 @@ services:
       - RECOVERY_TRIES=1
       - SCORE_CAP=.6
       - HEAL_ENABLED=true
-      - SELENIUM_HOST=selenium-hub
-      - HEALENIUM_HOST=healenium
-      - IMITATE_HOST=selector-imitator
-      - SELENIUM_URL=/
+      - SELENIUM_SERVER_URL=http://hlm-selenoid:4444/wd/hub
+      - APPIUM_SERVER_URL=http://host.docker.internal:4723/wd/hub
+      - HEALENIUM_SERVER_URL=http://localhost:7878
+      - HEALENIUM_SERVICE=http://healenium:7878
+      - IMITATE_SERVICE=http://selector-imitator:8000
     networks:
       - healenium
 
