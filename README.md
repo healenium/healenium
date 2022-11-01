@@ -56,6 +56,13 @@ docker-compose up -d
 docker-compose -f docker-compose-selenium-grid.yaml up -d
 ```
 
+Run Healenium with Appium only
+
+```sh
+docker-compose -f docker-compose-appium.yaml up -d
+```
+More details about integration Healenium with Appium [here](https://github.com/healenium/healenium-appium)
+
 ### Language examples
 
 ```
