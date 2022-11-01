@@ -62,31 +62,6 @@ services:
     networks:
       - healenium
 
-  selenoid:
-    image: healenium/hlm-selenoid:0.1.0
-    container_name: hlm-selenoid
-    restart: on-failure
-    ports:
-      - "4444:4444"
-    environment:
-      - PROXY_CONTAINER_NAME=hlm-proxy
-    volumes:
-      - .:/etc/selenoid/:ro
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: ["-container-network", "healenium"]
-    networks:
-      - healenium
-
-  selenoid-ui:
-    image: aerokube/selenoid-ui:1.10.5
-    container_name: selenoid-ui
-    restart: on-failure
-    ports:
-      - "8080:8080"
-    command: [ "--selenoid-uri", "http://hlm-selenoid:4444" ]
-    networks:
-      - healenium
-
 networks:
   healenium:
     name: healenium
