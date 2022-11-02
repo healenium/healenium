@@ -2,6 +2,7 @@
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/healenium/hlm-backend.svg?maxAge=25920)](https://hub.docker.com/u/healenium)
 [![License](https://img.shields.io/badge/license-Apache-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![@healenium](https://img.shields.io/badge/Telegram-%40healenium-orange.svg)](https://t.me/healenium)
 
 ### Table of Contents
 
@@ -10,6 +11,8 @@
 [Healenium installation](#healenium-installation)
 * [Healenium with Selenoid](#run-healenium-with-selenoid)
 * [Healenium with Selenium-Grid](#run-healenium-with-selenium-grid)
+
+[Healenium installation without Docker](#healenium-installation-without-docker)
 
 [Language Examples](#language-examples)
 * [Java](#java)
@@ -62,6 +65,29 @@ Run Healenium with Appium only
 docker-compose -f docker-compose-appium.yaml up -d
 ```
 More details about integration Healenium with Appium [here](https://github.com/healenium/healenium-appium)
+
+### Healenium installation without Docker
+
+1. Start PostgeSql server.
+- Create user (healenium_user/YDk2nmNs4s9aCP6K) (example data)
+- Set attribute 'Can Login' (true) to user
+- Create database (healenium) and set owner healenium_user
+- Create schema (healenium) and set owner healenium_user
+
+2. Use bash script 'start_healenium.sh' your db user and password to start the application
+
+3. Setup selenium server (selenium-grid)
+
+Download healenium services
+```sh
+download_services.sh
+```
+
+Run shell command to launch healenium components 
+```sh
+start_healenium.sh
+```
+
 
 ### Language examples
 
