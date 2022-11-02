@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Requirements
+# Requirements hlm_backend
 HLM_POSTGRES_DB=healenium
 HLM_POSTGRES_SCHEMA=healenium
 HLM_POSTGRES_USER=healenium_user
