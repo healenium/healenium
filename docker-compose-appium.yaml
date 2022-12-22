@@ -46,7 +46,7 @@ services:
       - healenium
 
   hlm-proxy:
-    image: healenium/hlm-proxy:1.2.0
+    image: healenium/hlm-proxy:1.2.1
     container_name: hlm-proxy
     restart: on-failure
     ports:
