@@ -18,7 +18,7 @@ services:
       - healenium
 
   healenium:
-    image: healenium/hlm-backend:3.2.5
+    image: healenium/hlm-backend:3.3.0
     container_name: healenium
     restart: on-failure
     ports:
@@ -31,8 +31,12 @@ services:
       - SPRING_POSTGRES_USER=healenium_user
       - SPRING_POSTGRES_PASSWORD=YDk2nmNs4s9aCP6K
       - SPRING_POSTGRES_DB_HOST=postgres-db
-      - KEY_SELECTOR_URL=true
-      - COLLECT_METRICS=true
+      - KEY_SELECTOR_URL=false
+      - KEY_SELECTOR_PATH=false
+      - COLLECT_METRICS=false
+      - HLM_LOG_LEVEL=info
+    volumes:
+      - ./screenshots/:/screenshots
     networks:
       - healenium
 
@@ -46,7 +50,7 @@ services:
       - healenium
 
   hlm-proxy:
-    image: healenium/hlm-proxy:1.2.0
+    image: healenium/hlm-proxy:1.3.0
     container_name: hlm-proxy
     restart: on-failure
     ports:
@@ -55,11 +59,12 @@ services:
       - RECOVERY_TRIES=1
       - SCORE_CAP=.6
       - HEAL_ENABLED=true
-      - SELENIUM_SERVER_URL=http://hlm-selenoid:4444/wd/hub
-      - APPIUM_SERVER_URL=http://host.docker.internal:4723/wd/hub
+      - SELENIUM_SERVER_URL=http://selenium-hub:4444/wd/hub
+      - APPIUM_SERVER_URL=https://healenium-demo:1VONm6RUcOBzx05wZNcjvYSaQcq9WH7AqcjPCuo%2FU%2FUC7IQOBrG6l%2B13e%2BQIoWlRbqscui4f5Mlrf3zLEeZ6wa8ZIVJq5WUCOXepsX%2B%2BvGKkI3Emc5nY%2Bil06fybblCSn4iyulibTjwc886cedk5TlKz1VssVB3rCvxw2o4rlqxEJfe3SyhV0KeyKfBcSUP7aOweErgr%2F2V064dt%2FiW1KvUY4kClnEScz16UMeGWgrbQItMqNa6ZUH%2FWVb%2BxLY08mJxHFcEwBDszyPD1jDwcXRfV1mvKvR39YvdEulE3ngibGky5BqjFGw%2BGZCO7ruFH3VUs62D9VIsUOPz22Kov1%2BS3eZieYNyksUWxyTEqcZdaFECHWP0HDN21Sr%2FLvNtn7MDTunIWUoBhOTPD0X7BSEUqW4nTVdHfAhSOf1boxtQOcSCZkDeLTG8A%2FZCxFXpSv1d8X968JFd%2B%2FqG1%2BMZzAdj%2BXqBssS%2BqMxdLuy9yZFjPCP8ySDCrrJt0NGYsVBE6pXjcac6RnUMu4VvmmTo8ZD%2FSILiNYcJbUyqO5SPwb18JRUHlxa9Qv%2BkS%2FgRVAID6KgA0kQPQ3AanNRjqhZpADLacsfOzmJDpfek0iEdb8Asd05ZIsAcTIVQsyU0AvoGkK%2FgDOVTQP3Bc8w5u7WcKhPOJLV1zEeQOytjMQDnqjFzHFJbFFA7a4SI7L3w68%2FFreTMPwD6gHZNzcPpe1tx8br1dCbl1khOkyhdak0tnMVH50IgJm89Y8p09x4yswkSgz0WS88LHQ9IDja5bZaUdwsQfpMuczdhGnhz8gIgOXF8jkrSRGma6vhxylpbc8XZgn%2FrGDVCNpSCBSd0CH7NVRhEfjzsAj5BEv3nk1QG22Iswwlskn0cAPBotm45PlTeVaOLGULmIX2TMjE4DUYCXHi3LO5DNfbQUQuT8rAmj6w@app.mobitru.com/wd/hub
       - HEALENIUM_SERVER_URL=http://localhost:7878
       - HEALENIUM_SERVICE=http://healenium:7878
       - IMITATE_SERVICE=http://selector-imitator:8000
+      - HLM_LOG_LEVEL=info
     networks:
       - healenium
 

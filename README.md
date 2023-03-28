@@ -45,7 +45,7 @@ git clone https://github.com/healenium/healenium.git
 
 Example pull selenoid chrome image:
 ```sh
-docker pull selenoid/vnc:chrome_102.0
+docker pull selenoid/vnc:chrome_111.0
 ```
 Full list of browser images you can find [here](https://hub.docker.com/u/selenoid)
 
@@ -74,7 +74,7 @@ Go to shell-installation:
 cd shell-installatio
 ```
 
-There are locally and remote options to run healenium.
+There are web and remote options to run healenium.
 
 1. Start PostgeSql server.
 - Create user (healenium_user/YDk2nmNs4s9aCP6K) (example data)
