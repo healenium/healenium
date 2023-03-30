@@ -33,7 +33,7 @@ services:
       - SPRING_POSTGRES_DB_HOST=postgres-db
       - KEY_SELECTOR_URL=false
       - KEY_SELECTOR_PATH=false
-      - COLLECT_METRICS=false
+      - COLLECT_METRICS=true
       - HLM_LOG_LEVEL=info
     volumes:
       - ./screenshots/:/screenshots
