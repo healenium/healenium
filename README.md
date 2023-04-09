@@ -31,6 +31,9 @@ Healenium acts as proxy between client and selenium server.
 - `selector imitator` (Convert healed locator to convenient format)
 - `selenoid`/`selenium-grid` (Selenium server)
 
+<img width="977" alt="image" src="https://user-images.githubusercontent.com/69298932/230408855-11aefcb9-6e46-4c3a-a3da-bdad66a52a9c.png">
+
+
 ### Healenium installation
 
 Clone Healenium repository:
