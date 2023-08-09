@@ -18,7 +18,7 @@ services:
       - healenium
 
   healenium:
-    image: healenium/hlm-backend:3.3.4
+    image: healenium/hlm-backend:3.4.0
     container_name: healenium
     restart: on-failure
     ports:
@@ -50,7 +50,7 @@ services:
       - healenium
 
   hlm-proxy:
-    image: healenium/hlm-proxy:1.3.4
+    image: healenium/hlm-proxy:1.3.5
     container_name: hlm-proxy
     restart: on-failure
     ports:
@@ -71,7 +71,7 @@ services:
       - healenium
 
   chrome:
-    image: selenium/node-chrome:103.0
+    image: selenium/node-chrome:latest
     container_name: node-chrome
     shm_size: 2gb
     depends_on:
@@ -80,11 +80,14 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_INSTANCES=5
+      - SE_NODE_MAX_SESSIONS=5
+      - SE_NODE_SESSION_TIMEOUT=20
     networks:
       - healenium
 
   edge:
-    image: selenium/node-edge:103.0
+    image: selenium/node-edge:latest
     container_name: node-edge
     shm_size: 2gb
     depends_on:
@@ -97,7 +100,7 @@ services:
       - healenium
 
   firefox:
-    image: selenium/node-firefox:101.0
+    image: selenium/node-firefox:latest
     container_name: node-firefox
     shm_size: 2gb
     depends_on:
@@ -110,7 +113,7 @@ services:
       - healenium
 
   selenium-hub:
-    image: selenium/hub:4.3.0
+    image: selenium/hub:latest
     container_name: selenium-hub
     ports:
       - "4442:4442"
