@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.8"
 
 services:
 
@@ -18,7 +18,7 @@ services:
       - healenium
 
   healenium:
-    image: healenium/hlm-backend:3.3.4
+    image: healenium/hlm-backend:3.4.0
     container_name: healenium
     restart: on-failure
     ports:
