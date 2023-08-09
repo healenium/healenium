@@ -9,8 +9,9 @@
 [Overall information](#overall-information)
 
 [Healenium installation](#healenium-installation)
-* [Healenium with Selenoid](#run-healenium-with-selenoid)
 * [Healenium with Selenium-Grid](#run-healenium-with-selenium-grid)
+* [Healenium with Selenoid](#run-healenium-with-selenoid)
+* [Healenium with Appium](#run-healenium-with-appium-only)
 
 [Healenium installation without Docker](#healenium-installation-without-docker)
 
@@ -41,6 +42,11 @@ Clone Healenium repository:
 git clone https://github.com/healenium/healenium.git
 ```
 
+#### Run Healenium with Selenium-Grid:
+```sh
+docker-compose up -d
+```
+
 #### Run Healenium with Selenoid
 
 > Note: `browsers.json` consists of target browsers and appropriate versions.
@@ -52,22 +58,19 @@ docker pull selenoid/vnc:chrome_111.0
 ```
 Full list of browser images you can find [here](https://hub.docker.com/u/selenoid)
 
+
 Run healenium with Selenoid:
 ```sh
-docker-compose up -d
+docker-compose -f docker-compose-selenoid.yaml up -d
 ```
 
-#### Run Healenium with Selenium-Grid:
-```sh
-docker-compose -f docker-compose-selenium-grid.yaml up -d
-```
-
-Run Healenium with Appium only
+#### Run Healenium with Appium only
 
 ```sh
 docker-compose -f docker-compose-appium.yaml up -d
 ```
 More details about integration Healenium with Appium [here](https://github.com/healenium/healenium-appium)
+
 
 ### Healenium installation without Docker
 
