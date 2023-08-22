@@ -47,9 +47,8 @@ git clone https://github.com/healenium/healenium.git
 docker-compose up -d
 ```
 
-#### Run Healenium with Selenoid
+#### Run Healenium with Selenoid:
 
-Run healenium with Selenoid:
 ```sh
 docker-compose -f docker-compose-selenoid.yaml up -d
 ```
