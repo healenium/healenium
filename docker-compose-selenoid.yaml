@@ -18,7 +18,7 @@ services:
       - healenium
 
   healenium:
-    image: healenium/hlm-backend:3.4.0
+    image: healenium/hlm-backend:3.4.1
     container_name: healenium
     restart: on-failure
     ports:
@@ -33,6 +33,7 @@ services:
       - SPRING_POSTGRES_DB_HOST=postgres-db
       - KEY_SELECTOR_URL=false
       - COLLECT_METRICS=true
+      - FIND_ELEMENTS_AUTO_HEALING=false
       - HLM_LOG_LEVEL=info
     volumes:
       - ./screenshots/:/screenshots
