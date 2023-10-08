@@ -47,19 +47,8 @@ git clone https://github.com/healenium/healenium.git
 docker-compose up -d
 ```
 
-#### Run Healenium with Selenoid
+#### Run Healenium with Selenoid:
 
-> Note: `browsers.json` consists of target browsers and appropriate versions.
-> Before run healenium you have to manually pull selenoid browser docker images with version specified in browsers.json
-
-Example pull selenoid chrome image:
-```sh
-docker pull selenoid/vnc:chrome_111.0
-```
-Full list of browser images you can find [here](https://hub.docker.com/u/selenoid)
-
-
-Run healenium with Selenoid:
 ```sh
 docker-compose -f docker-compose-selenoid.yaml up -d
 ```
