@@ -66,7 +66,7 @@ More details about integration Healenium with Appium [here](https://github.com/h
 Go to shell-installation:
 
 ```sh
-cd shell-installatio
+cd shell-installation
 ```
 
 There are web and remote options to run healenium.
