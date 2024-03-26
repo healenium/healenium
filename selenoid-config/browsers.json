@@ -28,35 +28,5 @@
                 "path": "/wd/hub"
             }
         }
-    },
-    "edge": {
-        "default": "122.0",
-        "versions": {
-            "121.0": {
-                "image": "selenoid/edge:121.0",
-                "port": "4444",
-                "path": "/"
-            },
-            "122.0": {
-                "image": "selenoid/edge:122.0",
-                "port": "4444",
-                "path": "/"
-            }
-        }
-    },
-    "opera": {
-        "default": "108.0",
-        "versions": {
-            "107.0": {
-                "image": "selenoid/opera:107.0",
-                "port": "4444",
-                "path": "/"
-            },
-            "108.0": {
-                "image": "selenoid/opera:108.0",
-                "port": "4444",
-                "path": "/"
-            }
-        }
     }
 }
