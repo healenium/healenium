@@ -123,7 +123,6 @@ start_healenium.sh
     
     current_webdriver = webdriver.Remote(
         command_executor=nodeURL,
-        desired_capabilities=webdriver.DesiredCapabilities.CHROME,
         options=options,
     )
 ```
