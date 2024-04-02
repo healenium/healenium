@@ -65,7 +65,7 @@ services:
       - HEALENIUM_SERVER_URL=http://localhost:7878
       - HEALENIUM_SERVICE=http://healenium:7878
       - IMITATE_SERVICE=http://selector-imitator:8000
-      - HLM_LOG_LEVEL=debug
+      - HLM_LOG_LEVEL=info
     volumes:
       - ./logs/:/logs
     networks:
