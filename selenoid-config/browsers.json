@@ -1,27 +1,29 @@
 {
     "chrome": {
-        "default": "111.0",
+        "default": "122.0",
         "versions": {
-            "111.0": {
-                "image": "selenoid/vnc:chrome_111.0",
-                "port": "4444"
+            "121.0": {
+                "image": "selenoid/chrome:121.0",
+                "port": "4444",
+                "path": "/"
             },
-            "110.0": {
-                "image": "selenoid/vnc:chrome_110.0",
-                "port": "4444"
+            "122.0": {
+                "image": "selenoid/chrome:122.0",
+                "port": "4444",
+                "path": "/"
             }
         }
     },
     "firefox": {
-        "default": "111.0",
+        "default": "124.0",
         "versions": {
-            "111.0": {
-                "image": "selenoid/vnc:firefox_111.0",
+            "123.0": {
+                "image": "selenoid/firefox:123.0",
                 "port": "4444",
                 "path": "/wd/hub"
             },
-            "110.0": {
-                "image": "selenoid/vnc:firefox_110.0",
+            "124.0": {
+                "image": "selenoid/firefox:124.0",
                 "port": "4444",
                 "path": "/wd/hub"
             }
