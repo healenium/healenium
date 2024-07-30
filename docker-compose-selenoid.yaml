@@ -61,7 +61,6 @@ services:
       - SCORE_CAP=.6
       - HEAL_ENABLED=true
       - SELENIUM_SERVER_URL=http://selenoid:4444/wd/hub
-      - APPIUM_SERVER_URL=http://host.docker.internal:4723/wd/hub
       - HEALENIUM_SERVER_URL=http://localhost:7878
       - HEALENIUM_SERVICE=http://healenium:7878
       - IMITATE_SERVICE=http://selector-imitator:8000
