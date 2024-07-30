@@ -27,7 +27,7 @@ Healenium acts as proxy between client and selenium server.
 
 `Docker-compose` includes the following services:
 - `postgres-db` (PostgreSQL database to store etalon selector / healing / report)
-- `hlm-proxy` (Proxy client request to Selenium server)
+- `hlm-proxy` (Proxying client requests to the Selenium server.)
 - `hlm-backend` (CRUD service)
 - `selector imitator` (Convert healed locator to convenient format)
 - `selenoid`/`selenium-grid` (Selenium server)
@@ -66,7 +66,7 @@ More details about integration Healenium with Appium [here](https://github.com/h
 Go to shell-installation:
 
 ```sh
-cd shell-installatio
+cd shell-installation
 ```
 
 There are web and remote options to run healenium.
@@ -123,7 +123,6 @@ start_healenium.sh
     
     current_webdriver = webdriver.Remote(
         command_executor=nodeURL,
-        desired_capabilities=webdriver.DesiredCapabilities.CHROME,
         options=options,
     )
 ```
