@@ -15,7 +15,8 @@ RECOVERY_TRIES=1
 SCORE_CAP=.6
 HEAL_ENABLED=true
 SELENIUM_SERVER_URL=http://localhost:4444
-APPIUM_SERVER_URL=http://localhost:4723/wd/hub
+# FOR APPIUM
+# SELENIUM_SERVER_URL=http://localhost:4723/wd/hub
 HEALENIUM_SERVER_URL=http://localhost:7878
 HEALENIUM_SERVICE=http://localhost:7878
 IMITATE_SERVICE=http://localhost:8000
