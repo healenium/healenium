@@ -2,7 +2,7 @@
 
 # Versions of the services
 HLM_BACKEND_VERSION="3.4.6"
-HLM_PROXY_VERSION="2.1.1"
+HLM_PROXY_VERSION="2.1.2"
 
 # Downloading
 curl -L https://github.com/healenium/healenium-backend/releases/download/${HLM_BACKEND_VERSION}/healenium-backend-${HLM_BACKEND_VERSION}.jar > hlm-backend.jar
