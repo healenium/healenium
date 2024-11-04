@@ -40,24 +40,24 @@ For a detailed comparison and further insights into these approaches, you can ex
 
 ### Healenium installation
 
-* Start your journey by setting up Healenium in your development environment. 
+1. Start your journey by setting up Healenium in your development environment. 
 Follow our step-by-step installation guide to integrate Healenium seamlessly into your project.
 [Download and install](https://healenium.io/docs/download_and_install)
 
 ### Disable Healing
-* Discover how to control the healing function. This section teaches you how to disable and enable healing as per your testing scenarios.
+2. Discover how to control the healing function. This section teaches you how to disable and enable healing as per your testing scenarios.
 [Disable Healing](https://healenium.io/docs/disable_healing)
 
 ### Frameworks and Appium
-* Healenium is a versatile visual testing and self-healing framework that can be seamlessly integrated with several popular test automation frameworks, enhancing your ability to create robust and reliable automated tests
+3. Healenium is a versatile visual testing and self-healing framework that can be seamlessly integrated with several popular test automation frameworks, enhancing your ability to create robust and reliable automated tests
 [Frameworks](https://healenium.io/frameworks) and [Appium](https://healenium.io/docs/download_and_install/hlm_appium)
 
 ### Report
-* Finish your tutorial by generating and interpreting reports. Understand how to use Healenium's reporting features to analyze and improve your test results.
+4. Finish your tutorial by generating and interpreting reports. Understand how to use Healenium's reporting features to analyze and improve your test results.
 [Report](https://healenium.io/docs/report)
 
 ### IDEA Plugin
-* Enhance your IDE experience by installing the Healenium plugin. This integration simplifies the healing process and streamlines your workflow.
+5. Enhance your IDE experience by installing the Healenium plugin. This integration simplifies the healing process and streamlines your workflow.
 [IDEA Plugin](https://healenium.io/docs/how_healenium_works)
 
 ### Community
