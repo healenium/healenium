@@ -38,32 +38,31 @@ For a detailed comparison and further insights into these approaches, you can ex
 * Overview of Approaches: [Healenium Approaches Overview](https://healenium.io/docs/overview)
 * How Healenium Works: Uncover the mechanics behind Healenium's intelligent healing process: [How Healenium Works](https://healenium.io/docs/how_healenium_works)
 
-#### Healenium installation
+### Healenium installation
 
 Start your journey by setting up Healenium in your development environment. 
 Follow our step-by-step installation guide to integrate Healenium seamlessly into your project.
 [Download and install](https://healenium.io/docs/download_and_install)
 
-#### Configuration
-
+### Configuration
 
 Once Healenium is installed, configure it to suit your project's needs. 
 Learn about the available configuration options and how to tailor them for optimal performance. 
 [Configuration]()
 
-#### Disable Healing
+### Disable Healing
 Discover how to control the healing function. This section teaches you how to disable and enable healing as per your testing scenarios.
 [Disable Healing](https://healenium.io/docs/disable_healing)
 
-#### Report
+### Report
 Finish your tutorial by generating and interpreting reports. Understand how to use Healenium's reporting features to analyze and improve your test results.
 [Report](https://healenium.io/docs/report)
 
-#### IDEA Plugin
+### IDEA Plugin
 Enhance your IDE experience by installing the Healenium plugin. This integration simplifies the healing process and streamlines your workflow.
 [IDEA Plugin](https://healenium.io/docs/how_healenium_works)
 
-#### Community
+### Community
 
 * [Telegram chat](https://t.me/healenium)
 * [GitHub Issues](https://github.com/healenium/healenium/issues)
