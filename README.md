@@ -9,8 +9,8 @@
 * [Overall information](#overall-information)
 * [Structure](#structure)
 * [Healenium installation](#healenium-installation)
-* [Configuration](#configuration)
 * [Disable Healing](#disable-healing)
+* [Frameworks and Appium](#frameworks-and-appium)
 * [Report](#report)
 * [IDEA Plugin](#idea-plugin)
 * [Community](#community)
@@ -44,15 +44,13 @@ For a detailed comparison and further insights into these approaches, you can ex
 Follow our step-by-step installation guide to integrate Healenium seamlessly into your project.
 [Download and install](https://healenium.io/docs/download_and_install)
 
-### Configuration
-
-* Once Healenium is installed, configure it to suit your project's needs. 
-Learn about the available configuration options and how to tailor them for optimal performance. 
-[Configuration]()
-
 ### Disable Healing
 * Discover how to control the healing function. This section teaches you how to disable and enable healing as per your testing scenarios.
 [Disable Healing](https://healenium.io/docs/disable_healing)
+
+### Frameworks and Appium
+* Healenium is a versatile visual testing and self-healing framework that can be seamlessly integrated with several popular test automation frameworks, enhancing your ability to create robust and reliable automated tests
+[Frameworks](https://healenium.io/frameworks) and [Appium](https://healenium.io/docs/download_and_install/hlm_appium)
 
 ### Report
 * Finish your tutorial by generating and interpreting reports. Understand how to use Healenium's reporting features to analyze and improve your test results.
