@@ -15,14 +15,14 @@
 * [IDEA Plugin](#idea-plugin)
 * [Community](#community)
 
-#### Overall information
+### Overall information
 Healenium is an open-source library for automated testing that leverages the power of machine learning to improve the reliability and resilience of your tests. 
 Healenium works by automatically detecting and healing test failures caused by changes in the UI, such as element IDs or class names.
 
 Self-healing framework based on Selenium and able to use all Selenium supported languages like Java/Python/JS/C#
 Healenium acts as proxy between client and selenium server.
 
-#### Structure
+### Structure
 Healenium includes the following services:
 - `postgres-db` (PostgreSQL database to store reference selectors / healing / report)
 - `hlm-proxy` (Proxying client requests to the Selenium server.)
