@@ -1,4 +1,4 @@
-# Healenium
+## Healenium
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/healenium/hlm-backend.svg?maxAge=25920)](https://hub.docker.com/u/healenium)
 [![License](https://img.shields.io/badge/license-Apache-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
@@ -6,27 +6,23 @@
 
 ### Table of Contents
 
-[Overall information](#overall-information)
+* [Overall information](#overall-information)
+* [Structure](#structure)
+* [Healenium installation](#healenium-installation)
+* [Configuration](#configuration)
+* [Disable Healing](#disable-healing)
+* [Report](#report)
+* [IDEA Plugin](#idea-plugin)
+* [Community](#community)
 
-[Structure](#structure)
+#### Overall information
+Healenium is an open-source library for automated testing that leverages the power of machine learning to improve the reliability and resilience of your tests. 
+Healenium works by automatically detecting and healing test failures caused by changes in the UI, such as element IDs or class names.
 
-[Healenium installation](#healenium-installation)
-
-[Configuration](#configuration)
-
-[Disable Healing](#disable-healing)
-
-[Report](#report)
-
-[IDEA Plugin](#idea-plugin)
-
-[Community](#community)
-
-## Overall information
 Self-healing framework based on Selenium and able to use all Selenium supported languages like Java/Python/JS/C#
 Healenium acts as proxy between client and selenium server.
 
-## Structure
+#### Structure
 Healenium includes the following services:
 - `postgres-db` (PostgreSQL database to store reference selectors / healing / report)
 - `hlm-proxy` (Proxying client requests to the Selenium server.)
@@ -34,31 +30,39 @@ Healenium includes the following services:
 - `selector imitator` (Convert healed locator to convenient format)
 - `selenoid`/`selenium-grid` (Selenium server)
 
-<img width="977" alt="image" src="https://user-images.githubusercontent.com/69298932/230408855-11aefcb9-6e46-4c3a-a3da-bdad66a52a9c.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/69298932/230408855-11aefcb9-6e46-4c3a-a3da-bdad66a52a9c.png">
 
+Healenium offers two distinct approaches to accommodate different testing needs: Healenium-Proxy and Healenium-Web. Each method provides unique advantages geared towards optimizing your test environment.
 
-##### Healenium installation
+For a detailed comparison and further insights into these approaches, you can explore the following resources:
+* Overview of Approaches: [Healenium Approaches Overview](https://healenium.io/docs/overview)
+* How Healenium Works: Uncover the mechanics behind Healenium's intelligent healing process: [How Healenium Works](https://healenium.io/docs/how_healenium_works)
 
-Link to Docs
+#### Healenium installation
 
+Start your journey by setting up Healenium in your development environment. 
+Follow our step-by-step installation guide to integrate Healenium seamlessly into your project.
+[Download and install](https://healenium.io/docs/download_and_install)
 
 #### Configuration
 
-Link to Docs
+Once Healenium is installed, configure it to suit your project's needs. 
+Learn about the available configuration options and how to tailor them for optimal performance. 
+[Configuration]()
 
-### Disable Healing
+#### Disable Healing
+Discover how to control the healing function. This section teaches you how to disable and enable healing as per your testing scenarios.
+[Disable Healing](https://healenium.io/docs/disable_healing)
 
-Link to Docs
+#### Report
+Finish your tutorial by generating and interpreting reports. Understand how to use Healenium's reporting features to analyze and improve your test results.
+[Report](https://healenium.io/docs/report)
 
-## Report
+#### IDEA Plugin
+Enhance your IDE experience by installing the Healenium plugin. This integration simplifies the healing process and streamlines your workflow.
+[IDEA Plugin](https://healenium.io/docs/how_healenium_works)
 
-Link to Docs
-
-# IDEA Plugin
-
-Link to Docs
-
-###### Community
+#### Community
 
 * [Telegram chat](https://t.me/healenium)
 * [GitHub Issues](https://github.com/healenium/healenium/issues)
