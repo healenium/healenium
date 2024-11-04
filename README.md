@@ -46,6 +46,7 @@ Follow our step-by-step installation guide to integrate Healenium seamlessly int
 
 #### Configuration
 
+
 Once Healenium is installed, configure it to suit your project's needs. 
 Learn about the available configuration options and how to tailor them for optimal performance. 
 [Configuration]()
