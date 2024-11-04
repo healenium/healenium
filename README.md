@@ -22,11 +22,11 @@
 
 [Community](#community)
 
-### Overall information
+## Overall information
 Self-healing framework based on Selenium and able to use all Selenium supported languages like Java/Python/JS/C#
 Healenium acts as proxy between client and selenium server.
 
-### Structure
+## Structure
 Healenium includes the following services:
 - `postgres-db` (PostgreSQL database to store reference selectors / healing / report)
 - `hlm-proxy` (Proxying client requests to the Selenium server.)
@@ -37,12 +37,12 @@ Healenium includes the following services:
 <img width="977" alt="image" src="https://user-images.githubusercontent.com/69298932/230408855-11aefcb9-6e46-4c3a-a3da-bdad66a52a9c.png">
 
 
-### Healenium installation
+##### Healenium installation
 
 Link to Docs
 
 
-### Configuration
+#### Configuration
 
 Link to Docs
 
@@ -50,15 +50,15 @@ Link to Docs
 
 Link to Docs
 
-### Report
+## Report
 
 Link to Docs
 
-### IDEA Plugin
+# IDEA Plugin
 
 Link to Docs
 
-## Community
+###### Community
 
 * [Telegram chat](https://t.me/healenium)
 * [GitHub Issues](https://github.com/healenium/healenium/issues)
