@@ -1,4 +1,4 @@
-# Healenium
+## Healenium
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/healenium/hlm-backend.svg?maxAge=25920)](https://hub.docker.com/u/healenium)
 [![License](https://img.shields.io/badge/license-Apache-brightgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
@@ -6,157 +6,61 @@
 
 ### Table of Contents
 
-[Overall information](#overall-information)
-
-[Healenium installation](#healenium-installation)
-* [Healenium with Selenium-Grid](#run-healenium-with-selenium-grid)
-* [Healenium with Selenoid](#run-healenium-with-selenoid)
-* [Healenium with Appium](#run-healenium-with-appium-only)
-
-[Healenium installation without Docker](#healenium-installation-without-docker)
-
-[Language Examples](#language-examples)
-* [Java](#java)
-* [Python](#python)
-* [C#](#c#)
-* [JavaScript](#javascript)
+* [Overall information](#overall-information)
+* [Structure](#structure)
+* [Healenium installation](#healenium-installation)
+* [Disable Healing](#disable-healing)
+* [Frameworks and Appium](#frameworks-and-appium)
+* [Report](#report)
+* [IDEA Plugin](#idea-plugin)
+* [Community](#community)
 
 ### Overall information
+Healenium is an open-source library for automated testing that leverages the power of machine learning to improve the reliability and resilience of your tests. 
+Healenium works by automatically detecting and healing test failures caused by changes in the UI, such as element IDs or class names.
+
 Self-healing framework based on Selenium and able to use all Selenium supported languages like Java/Python/JS/C#
 Healenium acts as proxy between client and selenium server.
 
-`Docker-compose` includes the following services:
-- `postgres-db` (PostgreSQL database to store etalon selector / healing / report)
+### Structure
+Healenium includes the following services:
+- `postgres-db` (PostgreSQL database to store reference selectors / healing / report)
 - `hlm-proxy` (Proxying client requests to the Selenium server.)
 - `hlm-backend` (CRUD service)
 - `selector imitator` (Convert healed locator to convenient format)
 - `selenoid`/`selenium-grid` (Selenium server)
 
-<img width="977" alt="image" src="https://user-images.githubusercontent.com/69298932/230408855-11aefcb9-6e46-4c3a-a3da-bdad66a52a9c.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/69298932/230408855-11aefcb9-6e46-4c3a-a3da-bdad66a52a9c.png">
 
+Healenium offers two distinct approaches to accommodate different testing needs: Healenium-Proxy and Healenium-Web. Each method provides unique advantages geared towards optimizing your test environment.
+
+For a detailed comparison and further insights into these approaches, you can explore the following resources:
+* Overview of Approaches: [Healenium Approaches Overview](https://healenium.io/docs/overview)
+* How Healenium Works: Uncover the mechanics behind Healenium's intelligent healing process: [How Healenium Works](https://healenium.io/docs/how_healenium_works)
 
 ### Healenium installation
 
-Clone Healenium repository:
-```sh
-git clone https://github.com/healenium/healenium.git
-```
+1. Start your journey by setting up Healenium in your development environment. 
+Follow our step-by-step installation guide to integrate Healenium seamlessly into your project.
+[Download and install](https://healenium.io/docs/download_and_install)
 
-#### Run Healenium with Selenium-Grid:
-```sh
-docker-compose up -d
-```
+### Disable Healing
+2. Discover how to control the healing function. This section teaches you how to disable and enable healing as per your testing scenarios.
+[Disable Healing](https://healenium.io/docs/disable_healing)
 
-#### Run Healenium with Selenoid:
+### Frameworks and Appium
+3. Healenium is a versatile visual testing and self-healing framework that can be seamlessly integrated with several popular test automation frameworks, enhancing your ability to create robust and reliable automated tests
+[Frameworks](https://healenium.io/frameworks) and [Appium](https://healenium.io/docs/download_and_install/hlm_appium)
 
-```sh
-docker-compose -f docker-compose-selenoid.yaml up -d
-```
+### Report
+4. Finish your tutorial by generating and interpreting reports. Understand how to use Healenium's reporting features to analyze and improve your test results.
+[Report](https://healenium.io/docs/report)
 
-#### Run Healenium with Appium only
+### IDEA Plugin
+5. Enhance your IDE experience by installing the Healenium plugin. This integration simplifies the healing process and streamlines your workflow.
+[IDEA Plugin](https://healenium.io/docs/how_healenium_works)
 
-```sh
-docker-compose -f docker-compose-appium.yaml up -d
-```
-More details about integration Healenium with Appium [here](https://github.com/healenium/healenium-appium)
-
-
-### Healenium installation without Docker
-
-Go to shell-installation:
-
-```sh
-cd shell-installation
-```
-
-There are web and remote options to run healenium.
-
-1. Start PostgeSql server.
-- Create user (healenium_user/YDk2nmNs4s9aCP6K) (example data)
-- Set attribute 'Can Login' (true) to user
-- Create database (healenium) and set owner healenium_user
-- Create schema (healenium) and set owner healenium_user
-
-2. Specify your db user and password data in the bash script 'start_healenium.sh'.
-
-3. Setup selenium server (selenium-grid)
-
-Download healenium services
-```sh
-download_services.sh
-```
-
-Run shell command to launch healenium components 
-```sh
-start_healenium.sh
-```
-
-
-### Language examples
-
-```
-    /**
-    * "http://127.0.0.1:8085" OR "http://localhost:8085" if you are using locally running proxy server
-    *
-    * if you want to use a remote proxy server,
-    * specify the ip address of this server - "http://remote_ip_address:8085"
-    */
-```
-
-###### Java:
-```java
-    String nodeURL = "http://localhost:8085";
-
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("--no-sandbox");
-    options.addArguments("--disable-dev-shm-usage");
-
-    WebDriver driver = new RemoteWebDriver(new URL(nodeURL), options);
-```
-
-###### Python
-```py
-    nodeURL = "http://localhost:8085"
-    
-    options = webdriver.ChromeOptions()
-    options.add_argument('--no-sandbox')
-    
-    current_webdriver = webdriver.Remote(
-        command_executor=nodeURL,
-        options=options,
-    )
-```
-
-###### C#
-```csharp
-    String nodeURL = "http://localhost:8085";
-
-    ChromeOptions optionsChrome = new ChromeOptions();
-    optionsChrome.AddArguments("--no-sandbox");
-    
-    RemoteWebDriver driverChrome = new RemoteWebDriver(new Uri(nodeURL), optionsChrome);
-```
-
-###### JavaScript
-```javascript
-    const NODE_URL = "http://localhost:8085";
-
-    let args = [
-        "--no-sandbox"
-    ];
-
-    let chromeCapabilities = selenium.Capabilities.chrome()
-        .set('chromeOptions', { args });
-
-    let builder = new selenium.Builder()
-        .forBrowser('chrome')
-        .withCapabilities(chromeCapabilities);
-
-    let driver = await builder.usingServer(NODE_URL).build();
-```
-
-
-## Community / Support
+### Community
 
 * [Telegram chat](https://t.me/healenium)
 * [GitHub Issues](https://github.com/healenium/healenium/issues)
