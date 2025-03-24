@@ -18,7 +18,7 @@ services:
       - healenium
 
   healenium:
-    image: healenium/hlm-backend:3.4.6
+    image: healenium/hlm-backend:3.4.7
     container_name: healenium
     restart: on-failure
     ports:
@@ -51,7 +51,7 @@ services:
       - healenium
 
   hlm-proxy:
-    image: healenium/hlm-proxy:2.1.4
+    image: healenium/hlm-proxy:2.1.5
     container_name: hlm-proxy
     restart: on-failure
     ports:
@@ -73,6 +73,7 @@ services:
   chrome:
     image: selenium/node-chrome:latest
     container_name: node-chrome
+    restart: on-failure
     shm_size: 2gb
     depends_on:
       - selenium-hub
@@ -102,6 +103,7 @@ services:
   firefox:
     image: selenium/node-firefox:latest
     container_name: node-firefox
+    restart: on-failure
     shm_size: 2gb
     depends_on:
       - selenium-hub
@@ -115,6 +117,7 @@ services:
   selenium-hub:
     image: selenium/hub:latest
     container_name: selenium-hub
+    restart: on-failure
     ports:
       - "4442:4442"
       - "4443:4443"
