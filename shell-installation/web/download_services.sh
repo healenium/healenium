@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Versions of the services
-HLM_BACKEND_VERSION="3.4.8"
+HLM_BACKEND_VERSION="3.4.9"
 
 # Downloading
 curl -L https://github.com/healenium/healenium-backend/releases/download/${HLM_BACKEND_VERSION}/healenium-backend-${HLM_BACKEND_VERSION}.jar > hlm-backend.jar

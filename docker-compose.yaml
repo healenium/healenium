@@ -18,7 +18,7 @@ services:
       - healenium
 
   healenium:
-    image: healenium/hlm-backend:3.4.8
+    image: healenium/hlm-backend:3.4.9
     container_name: healenium
     restart: on-failure
     ports:
@@ -51,7 +51,7 @@ services:
       - healenium
 
   hlm-proxy:
-    image: healenium/hlm-proxy:2.1.6
+    image: healenium/hlm-proxy:2.1.8
     container_name: hlm-proxy
     restart: on-failure
     ports:
@@ -64,7 +64,7 @@ services:
       - HEALENIUM_SERVER_URL=http://localhost:7878
       - HEALENIUM_SERVICE=http://healenium:7878
       - IMITATE_SERVICE=http://selector-imitator:8000
-      - HLM_LOG_LEVEL=info
+      - HLM_LOG_LEVEL=debug
     volumes:
       - ./logs/:/logs
     networks:
