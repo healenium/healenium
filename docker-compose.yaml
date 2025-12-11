@@ -18,7 +18,7 @@ services:
       - healenium
 
   healenium:
-    image: healenium/hlm-backend:3.4.10
+    image: healenium/hlm-backend:3.5.0
     container_name: healenium
     restart: on-failure
     ports:
@@ -71,7 +71,7 @@ services:
       - healenium
 
   chrome:
-    image: selenium/node-chrome:latest
+    image: selenium/node-chromium:latest
     container_name: node-chrome
     restart: on-failure
     shm_size: 2gb

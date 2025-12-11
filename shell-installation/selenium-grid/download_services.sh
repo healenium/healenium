@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Versions of the services
-HLM_BACKEND_VERSION="3.4.10"
+HLM_BACKEND_VERSION="3.5.0"
 HLM_PROXY_VERSION="2.1.9"
 
 # Downloading
