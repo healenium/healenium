@@ -10,6 +10,7 @@ services:
       - "5432:5432"
     volumes:
       - ./db/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - healenium_postgres_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=healenium
       - POSTGRES_USER=healenium_user
@@ -128,3 +129,7 @@ services:
 networks:
   healenium:
     name: healenium
+
+    
+volumes:
+  healenium_postgres_data:
