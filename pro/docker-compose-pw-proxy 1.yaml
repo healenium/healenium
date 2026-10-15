@@ -1,0 +1,130 @@
+services:
+
+  postgres-db:
+    image: ghcr.io/cloudnative-pg/postgresql:16.2
+    container_name: hlm-postgres-db
+    restart: always
+    ports:
+      - "45432:5432"
+    volumes:
+      - ./../db/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - POSTGRES_DB=healenium
+      - POSTGRES_USER=healenium_user
+      - POSTGRES_PASSWORD=YDk2nmNs4s9aCP6K
+    networks:
+      - healenium
+
+  healenium:
+    image: healenium/hlm-backend:4.0.0
+    container_name: hlm-backend
+    restart: on-failure
+    ports:
+      - "7878:7878"
+    environment:
+      - SPRING_POSTGRES_DB=healenium
+      - SPRING_POSTGRES_SCHEMA=healenium
+      - SPRING_POSTGRES_USER=healenium_user
+      - SPRING_POSTGRES_PASSWORD=YDk2nmNs4s9aCP6K
+      - SPRING_POSTGRES_DB_HOST=postgres-db
+      - KEY_SELECTOR_URL=false
+      - COLLECT_METRICS=false
+      - FIND_ELEMENTS_AUTO_HEALING=false
+      - PROFILE=free
+      - HLM_LOG_LEVEL=info
+    volumes:
+      - ./screenshots/:/screenshots
+      - ./logs/:/logs
+    networks:
+      - healenium
+
+  healenium-ui-dashboard:
+    image: healenium/hlm-ui-dashboard:1.0.1
+    container_name: hlm-ui-dashboard
+    restart: on-failure
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_BASE_URL=http://localhost:8085
+    networks:
+      - healenium
+
+  healenium-ai:
+    image: healenium/hlm-ai:1.2.0
+    container_name: hlm-ai
+    restart: on-failure
+    environment:
+      - HEALENIUM_SERVICE=http://healenium:7878
+    ports:
+      - "6565:6565"
+    networks:
+      - healenium
+
+  hlm-proxy:
+    image: healenium/hlm-proxy:2.2.1
+    container_name: hlm-proxy
+    restart: on-failure
+    ports:
+      - "8085:8085"
+    environment:
+      - RECOVERY_TRIES=1
+      - SCORE_CAP=.6
+      - HEAL_ENABLED=true
+      - HEALENIUM_SERVER_URL=http://localhost:7878
+      - HEALENIUM_SERVICE=http://healenium:7878
+      - IMITATE_SERVICE=http://selector-imitator:8000
+      - HEALENIUM_AI_SERVICE=http://healenium-ai:6565
+      - PLAYWRIGHT_PROXY_SERVICE=http://healenium-playwright-proxy:8095
+      - HLM_LOG_LEVEL=debug
+      - TEST_PLATFORM=playwright
+    volumes:
+      - ./logs/:/logs
+    networks:
+      - healenium
+
+  playwright-server:
+    image: mcr.microsoft.com/playwright:v1.62.0-noble
+    container_name: playwright-server
+    command: npx playwright@1.62.0 run-server --host 0.0.0.0 --port 5050
+    ports:
+      - "5050:5050"
+    networks:
+      - healenium
+
+  healenium-playwright-proxy:
+    image: healenium/hlm-playwright-proxy:1.2.0
+    container_name: hlm-playwright-proxy
+    restart: on-failure
+    ports:
+      - "8095:8095"
+      - "5005:5005"
+    depends_on:
+      - healenium
+      - playwright-server
+    environment:
+      # JVM config
+      - JAVA_OPTIONS=-XX:+UseG1GC -XX:MaxRAMPercentage=75
+      - JAVA_DEBUG_ENABLE=true
+      - JAVA_DEBUG_PORT=5005
+      # app config  
+      - HEALENIUM_SERVER_URL=http://healenium:7878
+      - HEALENIUM_AI_SERVICE_URL=http://healenium-ai:6565
+      - PLAYWRIGHT_SERVER_URL=ws://playwright-server:5050
+      - HLM_LOG_LEVEL=DEBUG
+      - NODEPATH_SHORTCUT=false
+      - HEALING_SCREENSHOT=true
+      - HEALING_HIGHLIGHT=true
+      - PROXY_DISCOVERY_STATE=REGULAR
+      - SCORE_CAP=.6
+      - RECOVERY_TRIES=1
+#      - SELECTOR_TYPE=xpath
+    volumes:
+      - ./screenshots/:/screenshots
+      - ./logs/:/logs
+      - ./discoveryAssets/:/discoveryAssets
+    networks:
+      - healenium
+
+networks:
+  healenium:
+    name: healenium
