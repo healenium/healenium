@@ -93,6 +93,7 @@ services:
       - HEALENIUM_AI_SERVICE=http://healenium-ai:6565
       - HEALENIUM_AUTH_ENABLED=true
       - HEALENIUM_IAM_URL=http://healenium-iam:7070
+      - DEFAULT_TENANT_ID=00000000-0000-0000-0000-000000000001
       - HLM_LOG_LEVEL=debug
     volumes:
       - ./logs/:/logs
@@ -107,6 +108,7 @@ services:
       - "5173:5173"
     environment:
       - VITE_API_BASE_URL=http://localhost:8085
+      - VITE_DEFAULT_TENANT_ID=00000000-0000-0000-0000-000000000001
     networks:
       - healenium
 
