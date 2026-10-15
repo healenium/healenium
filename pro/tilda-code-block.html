@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healenium Pro - Code Block</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 40px 24px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafafa;
+            color: #111;
+        }
+        
+        .code-block {
+            max-width: 640px;
+            margin: 0 auto 24px;
+            font-family: ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            background: #fff;
+            border: 1px solid #c4c8cc;
+            border-left: 3px solid #94a3b8;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+        }
+        
+        .code-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background: #f3f4f6;
+            border-bottom: 1px solid #e5e7eb;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 500;
+            color: #6b7280;
+            letter-spacing: 0.01em;
+        }
+        
+        .code-title {
+            color: #374151;
+            font-weight: 600;
+        }
+        
+        .copy-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px 8px;
+            font-size: 12px;
+            color: #9ca3af;
+            border-radius: 4px;
+            transition: color 0.15s, background 0.15s;
+        }
+        .copy-btn:hover {
+            color: #374151;
+            background: #f3f4f6;
+        }
+        
+        .code-content {
+            padding: 14px 16px;
+            overflow-x: auto;
+            background: #f1f3f4;
+        }
+        
+        .code-content pre {
+            margin: 0;
+            color: #1f2937;
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+
+<div class="code-block">
+    <div class="code-header">
+        <span class="code-title">Login to Docker Registry</span>
+        <button class="copy-btn" onclick="copyCode(this, 'code1')">Copy</button>
+    </div>
+    <div class="code-content">
+        <pre id="code1">cd healenium/pro
+chmod +x docker_login.sh
+./docker_login.sh</pre>
+    </div>
+</div>
+
+<div class="code-block">
+    <div class="code-header">
+        <span class="code-title">Start Healenium Pro with Selenium</span>
+        <button class="copy-btn" onclick="copyCode(this, 'code2')">Copy</button>
+    </div>
+    <div class="code-content">
+        <pre id="code2">docker-compose -f docker-compose-pro-selenium.yaml up -d</pre>
+    </div>
+</div>
+
+<script>
+function copyCode(button, codeId) {
+    const code = document.getElementById(codeId).textContent;
+    navigator.clipboard.writeText(code).then(() => {
+        button.textContent = 'Copied';
+        setTimeout(() => { button.textContent = 'Copy'; }, 2000);
+    });
+}
+</script>
+
+</body>
+</html>

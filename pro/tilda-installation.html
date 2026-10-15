@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healenium Pro - Installation Guide</title>
+    <style>
+        .hlm-install-doc {
+            box-sizing: border-box;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px 40px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #111;
+        }
+        .hlm-install-doc * { box-sizing: border-box; }
+        
+        .hlm-install-doc h1 { font-size: 1.75rem; margin: 0 0 1.5rem; font-weight: 700; }
+        .hlm-install-doc h2 { font-size: 1.35rem; margin: 2rem 0 1rem; color: #1f2937; font-weight: 600; }
+        .hlm-install-doc h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; color: #374151; font-weight: 600; }
+        .hlm-install-doc p { margin: 0 0 1rem; color: #374151; }
+        .hlm-install-doc ul { margin: 0 0 1rem; padding-left: 1.5rem; list-style: disc; }
+        .hlm-install-doc li { margin-bottom: 0.35rem; }
+        .hlm-install-doc hr { border: none; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+        .hlm-install-doc code { font-family: ui-monospace, monospace; font-size: 0.9em; background: #f3f4f6; padding: 0.15em 0.4em; border-radius: 4px; }
+        
+        .hlm-install-doc .notice {
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+        .hlm-install-doc .notice strong { color: #1f2937; }
+        
+        /* Code blocks — from tilda-code-block.html */
+        .hlm-install-doc .code-block {
+            margin: 1rem 0;
+            font-family: ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            background: #fff;
+            border: 1px solid #c4c8cc;
+            border-left: 3px solid #94a3b8;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+        }
+        .hlm-install-doc .code-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background: #f3f4f6;
+            border-bottom: 1px solid #e5e7eb;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 500;
+            color: #6b7280;
+            letter-spacing: 0.01em;
+        }
+        .hlm-install-doc .code-title { color: #374151; font-weight: 600; }
+        .hlm-install-doc .copy-btn {
+            background: none; border: none; cursor: pointer;
+            padding: 4px 8px; font-size: 12px; color: #9ca3af;
+            border-radius: 4px;
+            transition: color 0.15s, background 0.15s;
+        }
+        .hlm-install-doc .copy-btn:hover { color: #374151; background: #e5e7eb; }
+        .hlm-install-doc .code-content {
+            padding: 14px 16px;
+            overflow-x: auto;
+            background: #f1f3f4;
+        }
+        .hlm-install-doc .code-content pre { margin: 0; color: #1f2937; white-space: pre; }
+        
+        /* Collapsible installation methods */
+        .hlm-install-doc .accordion { margin: 1.5rem 0; }
+        .hlm-install-doc .accordion details {
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 12px;
+            background: #fff;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+        }
+        .hlm-install-doc .accordion details:last-child { margin-bottom: 0; }
+        .hlm-install-doc .accordion summary {
+            padding: 14px 18px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1f2937;
+            cursor: pointer;
+            list-style: none;
+            background: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+            user-select: none;
+        }
+        .hlm-install-doc .accordion summary::-webkit-details-marker { display: none; }
+        .hlm-install-doc .accordion summary::after {
+            content: '+';
+            float: right;
+            font-size: 1.2rem;
+            color: #6b7280;
+            line-height: 1;
+        }
+        .hlm-install-doc .accordion details[open] summary::after { content: '−'; }
+        .hlm-install-doc .accordion details[open] summary { border-bottom-color: transparent; }
+        .hlm-install-doc .accordion .accordion-body { padding: 18px; background: #fff; }
+        .hlm-install-doc .accordion .accordion-body > *:first-child { margin-top: 0; }
+        .hlm-install-doc .accordion .accordion-body > *:last-child { margin-bottom: 0; }
+        
+        /* Table */
+        .hlm-install-doc .doc-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin: 1rem 0;
+        }
+        .hlm-install-doc .doc-table th, .hlm-install-doc .doc-table td {
+            border: 1px solid #e5e7eb;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .hlm-install-doc .doc-table th { background: #f9fafb; font-weight: 600; color: #374151; }
+        .hlm-install-doc .doc-table td { color: #4b5563; }
+        
+        .hlm-install-doc .links { margin: 1.5rem 0; }
+        .hlm-install-doc .links a { color: #4854D8; text-decoration: none; }
+        .hlm-install-doc .links a:hover { text-decoration: underline; }
+        .hlm-install-doc .links li { margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+<div class="hlm-install-doc">
+
+<h1>Healenium Pro — Installation Guide</h1>
+
+<h2>Prerequisites</h2>
+<p>Before you begin, ensure you have:</p>
+<ul>
+    <li><strong>Docker</strong> (20.10+) and <strong>Docker Compose</strong> (2.0+) — for Docker installation</li>
+    <li><strong>Java 11+</strong> — for Shell installation</li>
+    <li><strong>Python 3.8+</strong> — for Shell installation</li>
+    <li><strong>PostgreSQL 15+</strong> — for Shell installation only</li>
+    <li><strong>GitHub Token</strong> (provided via email after purchase)</li>
+    <li><strong>Docker Hub credentials</strong> (provided via email after purchase)</li>
+    <li>Minimum <strong>4GB RAM</strong> and <strong>10GB disk space</strong></li>
+</ul>
+
+<hr>
+
+<h2>Choose Installation Method</h2>
+<p>Choose one of four options. Each includes the common setup steps (credentials, clone, .env) and then the steps specific to that method.</p>
+<ul>
+    <li><strong>Docker + Selenium</strong> — All services in containers</li>
+    <li><strong>Docker + Playwright</strong> — All services in containers</li>
+    <li><strong>Shell + Selenium</strong> — Manual setup with scripts</li>
+    <li><strong>Shell + Playwright</strong> — Manual setup with scripts</li>
+</ul>
+
+<div class="accordion">
+    <details>
+        <summary>Docker + Selenium</summary>
+        <div class="accordion-body">
+            <h3>Step 1: Receive Access Credentials</h3>
+            <p>After purchasing Healenium Pro, you will receive an email with: <strong>GitHub Token</strong>, <strong>Docker Hub username</strong>, <strong>Docker Hub password</strong>, <strong>License information</strong>.</p>
+            <div class="notice"><strong>Important:</strong> Keep these credentials secure. You'll need them to download Pro components.</div>
+            <h3>Step 2: Download Configuration Files</h3>
+            <p>Clone the Healenium Pro configuration:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Clone repository</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-clone-sel')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-clone-sel">git clone https://github.com/healenium/healenium.git
+cd healenium/pro</pre>
+                </div>
+            </div>
+            <h3>Step 3: Configure Credentials</h3>
+            <p>Create and configure the <code>.env</code> file with credentials from your email:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Create .env file</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-env-create-sel')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-env-create-sel">cp .env.example .env
+nano .env</pre>
+                </div>
+            </div>
+            <p>Add your credentials to <code>.env</code>:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">.env contents</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-env-contents-sel')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-env-contents-sel"># GitHub token (required for Shell installation)
+GITHUB_TOKEN=your_github_token_here
+
+# Docker Hub credentials (required for Docker installation)
+DOCKER_USERNAME=your_docker_username
+DOCKER_TOKEN=your_docker_password</pre>
+                </div>
+            </div>
+            <h3>Step 4: Login to Docker Registry</h3>
+            <p>Run the login script to authenticate with Docker Hub:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Login to Docker Registry</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-docker-login-sel')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-docker-login-sel">chmod +x docker_login.sh
+./docker_login.sh</pre>
+                </div>
+            </div>
+            <p>This script will read credentials from <code>.env</code> and login to Docker Hub.</p>
+            <h3>Step 5: Start Services</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Start Healenium Pro with Selenium</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-docker-selenium')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-docker-selenium">docker compose -f docker-compose-pro-selenium.yaml up -d</pre>
+                </div>
+            </div>
+            <p>This will start: PostgreSQL, Healenium Backend, Proxy, Selector Imitator, AI Service, UI Dashboard, Selenium Grid (Hub + Chrome/Firefox/Edge nodes).</p>
+            <h3>Step 6: Verify</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Check Docker services</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-docker-ps-sel')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-docker-ps-sel">docker compose ps</pre>
+                </div>
+            </div>
+        </div>
+    </details>
+
+    <details>
+        <summary>Docker + Playwright</summary>
+        <div class="accordion-body">
+            <h3>Step 1: Receive Access Credentials</h3>
+            <p>After purchasing Healenium Pro, you will receive an email with: <strong>GitHub Token</strong>, <strong>Docker Hub username</strong>, <strong>Docker Hub password</strong>, <strong>License information</strong>.</p>
+            <div class="notice"><strong>Important:</strong> Keep these credentials secure. You'll need them to download Pro components.</div>
+            <h3>Step 2: Download Configuration Files</h3>
+            <p>Clone the Healenium Pro configuration:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Clone repository</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-clone-pw')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-clone-pw">git clone https://github.com/healenium/healenium.git
+cd healenium/pro</pre>
+                </div>
+            </div>
+            <h3>Step 3: Configure Credentials</h3>
+            <p>Create and configure the <code>.env</code> file with credentials from your email:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Create .env file</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-env-create-pw')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-env-create-pw">cp .env.example .env
+nano .env</pre>
+                </div>
+            </div>
+            <p>Add your credentials to <code>.env</code>:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">.env contents</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-env-contents-pw')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-env-contents-pw"># GitHub token (required for Shell installation)
+GITHUB_TOKEN=your_github_token_here
+
+# Docker Hub credentials (required for Docker installation)
+DOCKER_USERNAME=your_docker_username
+DOCKER_TOKEN=your_docker_password</pre>
+                </div>
+            </div>
+            <h3>Step 4: Login to Docker Registry</h3>
+            <p>Run the login script to authenticate with Docker Hub:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Login to Docker Registry</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-docker-login-pw')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-docker-login-pw">chmod +x docker_login.sh
+./docker_login.sh</pre>
+                </div>
+            </div>
+            <h3>Step 5: Start Services</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Start Healenium Pro with Playwright</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-docker-playwright')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-docker-playwright">docker compose -f docker-compose-pro-playwright.yaml up -d</pre>
+                </div>
+            </div>
+            <p>This will start: PostgreSQL, Healenium Backend, Proxy, Selector Imitator, AI Service, UI Dashboard, Playwright Server, Playwright Proxy.</p>
+            <h3>Step 6: Verify</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Check Docker services</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-docker-ps-pw')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-docker-ps-pw">docker compose ps</pre>
+                </div>
+            </div>
+        </div>
+    </details>
+
+    <details>
+        <summary>Shell + Selenium</summary>
+        <div class="accordion-body">
+            <div class="notice"><strong>Prerequisites:</strong> PostgreSQL 15+, Java 11+, Python 3.8+. Selenium Server must be running separately.</div>
+            <h3>Step 1: Receive Access Credentials</h3>
+            <p>After purchasing Healenium Pro, you will receive an email with: <strong>GitHub Token</strong>, <strong>Docker Hub username</strong>, <strong>Docker Hub password</strong>, <strong>License information</strong>.</p>
+            <div class="notice"><strong>Important:</strong> Keep these credentials secure. You'll need them to download Pro components.</div>
+            <h3>Step 2: Download Configuration Files</h3>
+            <p>Clone the Healenium Pro configuration:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Clone repository</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-clone-sh-sel')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-clone-sh-sel">git clone https://github.com/healenium/healenium.git
+cd healenium/pro</pre>
+                </div>
+            </div>
+            <h3>Step 3: Configure Credentials</h3>
+            <p>Create and configure the <code>.env</code> file with credentials from your email:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Create .env file</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-env-create-sh-sel')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-env-create-sh-sel">cp .env.example .env
+nano .env</pre>
+                </div>
+            </div>
+            <p>Add your credentials to <code>.env</code> (GitHub token is required for Shell installation):</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">.env contents</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-env-contents-sh-sel')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-env-contents-sh-sel"># GitHub token (required for Shell installation)
+GITHUB_TOKEN=your_github_token_here
+
+# Docker Hub credentials (required for Docker installation)
+DOCKER_USERNAME=your_docker_username
+DOCKER_TOKEN=your_docker_password</pre>
+                </div>
+            </div>
+            <h3>Step 4: Setup PostgreSQL Database</h3>
+            <p>Create database and user:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Create database and user</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-pg-create-sel')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-pg-create-sel">CREATE DATABASE healenium;
+CREATE USER healenium_user WITH PASSWORD 'YDk2nmNs4s9aCP6K';
+GRANT ALL PRIVILEGES ON DATABASE healenium TO healenium_user;</pre>
+                </div>
+            </div>
+            <p>Run initialization script:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Initialize database</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-pg-init-sel')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-pg-init-sel">psql -U healenium_user -d healenium -f db/sql/init.sql</pre>
+                </div>
+            </div>
+            <h3>Step 5: Download Pro Artifacts</h3>
+            <p>Navigate to <code>shell-installation</code> and run:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Download Selenium artifacts</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-shell-dl-selenium')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-shell-dl-selenium">cd shell-installation
+chmod +x selenium_download_pro.sh
+./selenium_download_pro.sh</pre>
+                </div>
+            </div>
+            <h3>Step 6: Start Selenium Hub</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Download and start Selenium Hub</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-selenium-hub')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-selenium-hub">wget https://github.com/SeleniumHQ/selenium/releases/download/selenium-4.16.0/selenium-server-4.16.0.jar
+java -jar selenium-server-4.16.0.jar standalone --port 4444</pre>
+                </div>
+            </div>
+            <p>Selenium Hub: <code>http://localhost:4444</code></p>
+            <h3>Step 7: Start Healenium Services</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Start Healenium Pro (Selenium)</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-shell-start-selenium')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-shell-start-selenium">chmod +x selenium_start_pro.sh
+./selenium_start_pro.sh</pre>
+                </div>
+            </div>
+            <h3>Step 8: Verify</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Check running processes</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-shell-verify-sel')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-shell-verify-sel">jps -l
+ps aux | grep app.py
+ls -la pid-*.file</pre>
+                </div>
+            </div>
+        </div>
+    </details>
+
+    <details>
+        <summary>Shell + Playwright</summary>
+        <div class="accordion-body">
+            <div class="notice"><strong>Prerequisites:</strong> PostgreSQL 15+, Java 11+, Python 3.8+. Playwright Server must be running separately.</div>
+            <h3>Step 1: Receive Access Credentials</h3>
+            <p>After purchasing Healenium Pro, you will receive an email with: <strong>GitHub Token</strong>, <strong>Docker Hub username</strong>, <strong>Docker Hub password</strong>, <strong>License information</strong>.</p>
+            <div class="notice"><strong>Important:</strong> Keep these credentials secure. You'll need them to download Pro components.</div>
+            <h3>Step 2: Download Configuration Files</h3>
+            <p>Clone the Healenium Pro configuration:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Clone repository</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-clone-sh-pw')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-clone-sh-pw">git clone https://github.com/healenium/healenium.git
+cd healenium/pro</pre>
+                </div>
+            </div>
+            <h3>Step 3: Configure Credentials</h3>
+            <p>Create and configure the <code>.env</code> file with credentials from your email:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Create .env file</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-env-create-sh-pw')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-env-create-sh-pw">cp .env.example .env
+nano .env</pre>
+                </div>
+            </div>
+            <p>Add your credentials to <code>.env</code> (GitHub token is required for Shell installation):</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">.env contents</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-env-contents-sh-pw')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-env-contents-sh-pw"># GitHub token (required for Shell installation)
+GITHUB_TOKEN=your_github_token_here
+
+# Docker Hub credentials (required for Docker installation)
+DOCKER_USERNAME=your_docker_username
+DOCKER_TOKEN=your_docker_password</pre>
+                </div>
+            </div>
+            <h3>Step 4: Setup PostgreSQL Database</h3>
+            <p>Create database and user:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Create database and user</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-pg-create-pw')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-pg-create-pw">CREATE DATABASE healenium;
+CREATE USER healenium_user WITH PASSWORD 'YDk2nmNs4s9aCP6K';
+GRANT ALL PRIVILEGES ON DATABASE healenium TO healenium_user;</pre>
+                </div>
+            </div>
+            <p>Run initialization script:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Initialize database</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-pg-init-pw')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-pg-init-pw">psql -U healenium_user -d healenium -f db/sql/init.sql</pre>
+                </div>
+            </div>
+            <h3>Step 5: Download Pro Artifacts</h3>
+            <p>Navigate to <code>shell-installation</code> and run:</p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Download Playwright artifacts</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-shell-dl-playwright')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-shell-dl-playwright">cd shell-installation
+chmod +x playwright_download_pro.sh
+./playwright_download_pro.sh</pre>
+                </div>
+            </div>
+            <h3>Step 6: Start Playwright Server</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Install and start Playwright Server</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-playwright-server')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-playwright-server">npm install -g playwright@1.55.1
+npx playwright run-server --host 0.0.0.0 --port 5000</pre>
+                </div>
+            </div>
+            <p>Playwright Server: <code>ws://localhost:5000</code></p>
+            <h3>Step 7: Start Healenium Services</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Start Healenium Pro (Playwright)</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-shell-start-playwright')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-shell-start-playwright">chmod +x playwright_start_pro.sh
+./playwright_start_pro.sh</pre>
+                </div>
+            </div>
+            <h3>Step 8: Verify</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-title">Check running processes</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code-shell-verify-pw')">Copy</button>
+                </div>
+                <div class="code-content">
+                    <pre id="code-shell-verify-pw">jps -l
+ps aux | grep app.py
+ls -la pid-*.file</pre>
+                </div>
+            </div>
+        </div>
+    </details>
+</div>
+
+<hr>
+
+<h2>Service Ports</h2>
+<table class="doc-table">
+    <thead>
+        <tr><th>Service</th><th>Port</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Healenium Backend</td><td>7878</td><td>Core healing engine API</td></tr>
+        <tr><td>Healenium Proxy</td><td>8085</td><td>WebDriver proxy with healing</td></tr>
+        <tr><td>UI Dashboard</td><td>5173</td><td>Web interface for reports</td></tr>
+        <tr><td>AI Service</td><td>6565</td><td>AI-powered healing service</td></tr>
+        <tr><td>PostgreSQL</td><td>5432</td><td>Database for healing data</td></tr>
+        <tr><td>Selector Imitator</td><td>8000</td><td>Selector generation service</td></tr>
+        <tr><td>Selenium Hub</td><td>4444</td><td>Selenium Grid (Selenium setup)</td></tr>
+        <tr><td>Playwright Server</td><td>5000</td><td>Playwright remote server (PW only)</td></tr>
+        <tr><td>Playwright Proxy</td><td>8095</td><td>Playwright proxy (PW only)</td></tr>
+    </tbody>
+</table>
+
+<hr>
+
+<h2>Stopping Services</h2>
+<p><strong>Docker:</strong></p>
+<div class="code-block">
+    <div class="code-header">
+        <span class="code-title">Stop Docker services</span>
+        <button class="copy-btn" onclick="copyCode(this, 'code-docker-down')">Copy</button>
+    </div>
+    <div class="code-content">
+        <pre id="code-docker-down">docker compose down
+# With volumes: docker compose down -v</pre>
+    </div>
+</div>
+<p><strong>Shell:</strong></p>
+<div class="code-block">
+    <div class="code-header">
+        <span class="code-title">Stop Shell services</span>
+        <button class="copy-btn" onclick="copyCode(this, 'code-shell-down')">Copy</button>
+    </div>
+    <div class="code-content">
+        <pre id="code-shell-down">cd shell-installation
+for pid_file in pid-*.file; do
+  if [ -f "$pid_file" ]; then
+    kill $(cat "$pid_file") 2>/dev/null
+    rm "$pid_file"
+  fi
+done</pre>
+    </div>
+</div>
+
+<hr>
+
+<h2>Troubleshooting</h2>
+<h3>Docker: Cannot pull images</h3>
+<div class="code-block">
+    <div class="code-header">
+        <span class="code-title">Verify and re-login</span>
+        <button class="copy-btn" onclick="copyCode(this, 'code-trouble-docker-login')">Copy</button>
+    </div>
+    <div class="code-content">
+        <pre id="code-trouble-docker-login">cat .env | grep DOCKER
+./docker_login.sh</pre>
+    </div>
+</div>
+<h3>Shell: Cannot download artifacts</h3>
+<div class="code-block">
+    <div class="code-header">
+        <span class="code-title">Verify GitHub token</span>
+        <button class="copy-btn" onclick="copyCode(this, 'code-trouble-gh')">Copy</button>
+    </div>
+    <div class="code-content">
+        <pre id="code-trouble-gh">cat ../.env | grep GITHUB_TOKEN
+curl -H "Authorization: token "YOUR_TOKEN" https://api.github.com/repos/healenium/aws-healenium-pro/releases/latest</pre>
+    </div>
+</div>
+
+<hr>
+
+</div>
+<script>
+function copyCode(button, codeId) {
+    var el = document.getElementById(codeId);
+    if (!el) return;
+    var code = el.textContent;
+    navigator.clipboard.writeText(code).then(function() {
+        button.textContent = 'Copied';
+        setTimeout(function() { button.textContent = 'Copy'; }, 2000);
+    });
+}
+</script>
+
+</body>
+</html>

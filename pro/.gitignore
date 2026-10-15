@@ -1,0 +1,183 @@
+# Healenium Pro - Git Ignore
+
+# ============================================================================
+# CRITICAL: Never commit credentials!
+# ============================================================================
+
+# Environment variables with credentials
+.env
+
+# ============================================================================
+# Downloaded releases
+# ============================================================================
+
+# Pro release archives
+*.zip
+*-pro-selenium.zip
+*-pro-playwright.zip
+
+# Extracted JAR files
+*.jar
+hlm-*.jar
+
+# ============================================================================
+# Runtime files
+# ============================================================================
+
+# PID files from shell installation
+pid-*.file
+*.pid
+
+# Symlinks created by scripts
+hlm-backend.jar
+hlm-proxy.jar
+hlm-ui-dashboard.jar
+hlm-ai.jar
+hlm-playwright-proxy.jar
+healenium-selector-imitator
+
+# ============================================================================
+# Logs and temporary files
+# ============================================================================
+
+# Log files
+*.log
+*.log.*
+*.log.gz
+
+# Screenshots from tests
+screenshots/
+discoveryAssets/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# ============================================================================
+# Docker volumes and data
+# ============================================================================
+
+# Docker Compose volumes (if created locally)
+postgres-data/
+db-data/
+
+# ============================================================================
+# IDE and OS files
+# ============================================================================
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.iws
+.idea_modules/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ============================================================================
+# Python (for selector-imitator if extracted)
+# ============================================================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# ============================================================================
+# Node modules (if using Playwright locally)
+# ============================================================================
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ============================================================================
+# Test reports and artifacts
+# ============================================================================
+
+# Test results
+target/
+build/
+test-results/
+test-output/
+
+# Coverage reports
+coverage/
+.coverage
+*.cover
+htmlcov/
+
+# ============================================================================
+# Backup files
+# ============================================================================
+
+# Database backups
+*.sql
+*.sql.gz
+backup/
+backups/
+
+# Configuration backups
+*.backup
+*.bak
+*.old
+
+# ============================================================================
+# Documentation builds (if using any doc generators)
+# ============================================================================
+
+docs/_build/
+site/
+
+# ============================================================================
+# Archive and compressed files (except examples)
+# ============================================================================
+
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# ============================================================================
+# Certificates and keys (extra security)
+# ============================================================================
+
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# ============================================================================
+# Custom ignore patterns
+# ============================================================================
+
+# Add your custom patterns below:
+
