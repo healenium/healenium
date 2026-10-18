@@ -26,14 +26,15 @@ ALTER ROLE healenium_app NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYP
 CREATE SCHEMA IF NOT EXISTS healenium;
 CREATE SCHEMA IF NOT EXISTS iam;
 
--- Grant minimal privileges to runtime user
-GRANT USAGE ON SCHEMA healenium TO healenium_app;
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA healenium TO healenium_app;
-GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA healenium TO healenium_app;
+-- Grant privileges to runtime user (strictly enforces RLS via NOBYPASSRLS)
+GRANT ALL ON SCHEMA healenium TO healenium_app;
+GRANT ALL ON ALL TABLES IN SCHEMA healenium TO healenium_app;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA healenium TO healenium_app;
 
 -- Default privileges for future objects
 ALTER DEFAULT PRIVILEGES IN SCHEMA healenium
-  GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO healenium_app;
+  GRANT ALL ON TABLES TO healenium_app;
 
 ALTER DEFAULT PRIVILEGES IN SCHEMA healenium
-  GRANT USAGE, SELECT ON SEQUENCES TO healenium_app;
+  GRANT ALL ON SEQUENCES TO healenium_app;
+
