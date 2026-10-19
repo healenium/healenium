@@ -107,7 +107,7 @@ services:
     ports:
       - "5173:5173"
     environment:
-      - VITE_API_BASE_URL=http://localhost:8085
+      - VITE_API_BASE_URL=
       - VITE_AUTH_ENABLED=true
       - VITE_DEFAULT_TENANT_ID=
       - VITE_COGNITO_DOMAIN=https://us-east-1crsyignoc.auth.us-east-1.amazoncognito.com
