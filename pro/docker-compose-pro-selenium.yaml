@@ -33,8 +33,8 @@ services:
       - IAM_DB_PASSWORD=YDk2nmNs4s9aCP6K
       - IAM_AUTH_MODE=saas
       - AWS_REGION=us-east-1
-      - COGNITO_USER_POOL_ID=
-      - COGNITO_CLIENT_ID=
+      - COGNITO_USER_POOL_ID=us-east-1_CRsYigNOC
+      - COGNITO_CLIENT_ID=6pqo3dnb78nkend0ehahlsm6e4
       - IAM_CACHE_TTL_SECONDS=300
     networks:
       - healenium
@@ -50,8 +50,8 @@ services:
     environment:
       - SPRING_POSTGRES_DB=healenium
       - SPRING_POSTGRES_SCHEMA=healenium
-      - SPRING_POSTGRES_USER=healenium_user
-      - SPRING_POSTGRES_PASSWORD=YDk2nmNs4s9aCP6K
+      - SPRING_POSTGRES_USER=healenium_app
+      - SPRING_POSTGRES_PASSWORD=healenium_app_password
       - SPRING_POSTGRES_DB_HOST=postgres-db
       - KEY_SELECTOR_URL=false
       - COLLECT_METRICS=true
@@ -93,7 +93,7 @@ services:
       - HEALENIUM_AI_SERVICE=http://healenium-ai:6565
       - HEALENIUM_AUTH_ENABLED=true
       - HEALENIUM_IAM_URL=http://healenium-iam:7070
-      - DEFAULT_TENANT_ID=00000000-0000-0000-0000-000000000001
+      - DEFAULT_TENANT_ID=
       - HLM_LOG_LEVEL=debug
     volumes:
       - ./logs/:/logs
@@ -108,7 +108,10 @@ services:
       - "5173:5173"
     environment:
       - VITE_API_BASE_URL=http://localhost:8085
-      - VITE_DEFAULT_TENANT_ID=00000000-0000-0000-0000-000000000001
+      - VITE_AUTH_ENABLED=true
+      - VITE_DEFAULT_TENANT_ID=
+      - VITE_COGNITO_DOMAIN=https://us-east-1crsyignoc.auth.us-east-1.amazoncognito.com
+      - VITE_COGNITO_CLIENT_ID=6pqo3dnb78nkend0ehahlsm6e4
     networks:
       - healenium
 
