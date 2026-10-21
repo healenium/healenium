@@ -18,7 +18,7 @@ services:
       - healenium
 
   healenium-iam:
-    image: aliakseiashukha/hlm-iam:EPMHLM-585-Healenium-IAM
+    image: healenium/hlm-iam:latest
     container_name: healenium-iam
     restart: on-failure
     ports:
@@ -40,7 +40,7 @@ services:
       - healenium
 
   healenium:
-    image: aliakseiashukha/hlm-backend:EPMHLM-585-Healenium-IAM
+    image: healenium/hlm-backend:latest
     container_name: healenium
     restart: on-failure
     ports:
@@ -73,7 +73,7 @@ services:
       - healenium
 
   hlm-proxy:
-    image: aliakseiashukha/hlm-proxy:EPMHLM-585-Healenium-IAM
+    image: healenium/hlm-proxy:latest
     container_name: hlm-proxy
     restart: on-failure
     ports:
@@ -101,7 +101,7 @@ services:
       - healenium
 
   healenium-ui-dashboard:
-    image: aliakseiashukha/hlm-ui-dashboard:EPMHLM-585-Healenium-IAM
+    image: healenium/hlm-ui-dashboard:latest
     container_name: hlm-ui-dashboard
     restart: on-failure
     ports:
@@ -116,7 +116,7 @@ services:
       - healenium
 
   healenium-ai:
-    image: aliakseiashukha/hlm-ai:EPMHLM-585-Healenium-IAM
+    image: healenium/hlm-ai:latest
     container_name: hlm-ai
     restart: on-failure
     ports:
