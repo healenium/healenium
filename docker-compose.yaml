@@ -18,7 +18,7 @@ services:
       - healenium
 
   healenium:
-    image: healenium/hlm-backend:3.4.6
+    image: healenium/hlm-backend:4.0.0
     container_name: healenium
     restart: on-failure
     ports:
@@ -42,7 +42,7 @@ services:
       - healenium
 
   selector-imitator:
-    image: healenium/hlm-selector-imitator:1.4
+    image: healenium/hlm-selector-imitator:1.6
     container_name: selector-imitator
     restart: on-failure
     ports:
@@ -51,7 +51,7 @@ services:
       - healenium
 
   hlm-proxy:
-    image: healenium/hlm-proxy:2.1.2
+    image: healenium/hlm-proxy:2.3.0
     container_name: hlm-proxy
     restart: on-failure
     ports:
@@ -64,15 +64,16 @@ services:
       - HEALENIUM_SERVER_URL=http://localhost:7878
       - HEALENIUM_SERVICE=http://healenium:7878
       - IMITATE_SERVICE=http://selector-imitator:8000
-      - HLM_LOG_LEVEL=info
+      - HLM_LOG_LEVEL=debug
     volumes:
       - ./logs/:/logs
     networks:
       - healenium
 
   chrome:
-    image: selenium/node-chrome:latest
+    image: selenium/node-chromium:latest
     container_name: node-chrome
+    restart: on-failure
     shm_size: 2gb
     depends_on:
       - selenium-hub
@@ -86,22 +87,23 @@ services:
     networks:
       - healenium
 
-  edge:
-    image: selenium/node-edge:latest
-    container_name: node-edge
-    shm_size: 2gb
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-    networks:
-      - healenium
+#  edge:
+#    image: selenium/node-edge:latest
+#    container_name: node-edge
+#    shm_size: 2gb
+#    depends_on:
+#      - selenium-hub
+#    environment:
+#      - SE_EVENT_BUS_HOST=selenium-hub
+#      - SE_EVENT_BUS_PUBLISH_PORT=4442
+#      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+#    networks:
+#      - healenium
 
   firefox:
     image: selenium/node-firefox:latest
     container_name: node-firefox
+    restart: on-failure
     shm_size: 2gb
     depends_on:
       - selenium-hub
@@ -115,6 +117,7 @@ services:
   selenium-hub:
     image: selenium/hub:latest
     container_name: selenium-hub
+    restart: on-failure
     ports:
       - "4442:4442"
       - "4443:4443"
