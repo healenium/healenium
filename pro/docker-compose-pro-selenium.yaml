@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   postgres-db:
-    image: ghcr.io/cloudnative-pg/postgresql:16.2
+    image: postgres:16
     container_name: postgres-db
     restart: always
     ports:
@@ -24,8 +24,11 @@ services:
     ports:
       - "7070:7070"
     depends_on:
-      - postgres-db
+      postgres-db:
+        condition: service_healthy
     environment:
+      - SERVER_PORT=7070
+      - SERVER_MAX_HTTP_REQUEST_HEADER_SIZE=64KB
       - POSTGRES_HOST=postgres-db
       - POSTGRES_PORT=5432
       - POSTGRES_DB=healenium
@@ -36,6 +39,7 @@ services:
       - COGNITO_USER_POOL_ID=us-east-1_CRsYigNOC
       - COGNITO_CLIENT_ID=6pqo3dnb78nkend0ehahlsm6e4
       - IAM_CACHE_TTL_SECONDS=300
+      - IAM_CACHE_MAX_SIZE=10000
     networks:
       - healenium
 
@@ -45,18 +49,23 @@ services:
     restart: on-failure
     ports:
       - "7878:7878"
-    links:
-      - postgres-db
+    depends_on:
+      postgres-db:
+        condition: service_healthy
     environment:
       - SPRING_POSTGRES_DB=healenium
       - SPRING_POSTGRES_SCHEMA=healenium
       - SPRING_POSTGRES_USER=healenium_app
       - SPRING_POSTGRES_PASSWORD=healenium_app_password
       - SPRING_POSTGRES_DB_HOST=postgres-db
+      - SPRING_LIQUIBASE_USER=healenium_user
+      - SPRING_LIQUIBASE_PASSWORD=YDk2nmNs4s9aCP6K
       - KEY_SELECTOR_URL=false
       - COLLECT_METRICS=true
       - FIND_ELEMENTS_AUTO_HEALING=false
-      - HLM_LOG_LEVEL=info
+      - HEALENIUM_AI_SERVICE=http://healenium-ai:6565
+      - HLM_LOG_LEVEL=debug
+      - SERVER_MAX_HTTP_REQUEST_HEADER_SIZE=64KB
     volumes:
       - ./screenshots/:/screenshots
       - ./logs/:/logs
@@ -86,15 +95,18 @@ services:
       - RECOVERY_TRIES=1
       - SCORE_CAP=.6
       - HEAL_ENABLED=true
+      - SELECTOR_TYPE=xpath
       - SELENIUM_SERVER_URL=http://selenium-hub:4444/wd/hub
       - HEALENIUM_SERVER_URL=http://healenium:7878
       - HEALENIUM_SERVICE=http://healenium:7878
+      - HEALENIUM_CONTAINER_URL=http://healenium:7878
       - IMITATE_SERVICE=http://selector-imitator:8000
       - HEALENIUM_AI_SERVICE=http://healenium-ai:6565
       - HEALENIUM_AUTH_ENABLED=true
       - HEALENIUM_IAM_URL=http://healenium-iam:7070
       - DEFAULT_TENANT_ID=
       - HLM_LOG_LEVEL=debug
+      - SERVER_MAX_HTTP_REQUEST_HEADER_SIZE=64KB
     volumes:
       - ./logs/:/logs
     networks:
@@ -107,11 +119,10 @@ services:
     ports:
       - "5173:5173"
     environment:
-      - VITE_API_BASE_URL=
       - VITE_AUTH_ENABLED=true
       - VITE_DEFAULT_TENANT_ID=
-      - VITE_COGNITO_DOMAIN=https://us-east-1crsyignoc.auth.us-east-1.amazoncognito.com
-      - VITE_COGNITO_CLIENT_ID=6pqo3dnb78nkend0ehahlsm6e4
+      - VITE_LOGIN_URL=https://us-east-1crsyignoc.auth.us-east-1.amazoncognito.com/login?client_id=6pqo3dnb78nkend0ehahlsm6e4
+      - VITE_POST_LOGOUT_REDIRECT=https://44.193.74.68/
     networks:
       - healenium
 
@@ -126,6 +137,8 @@ services:
         condition: service_healthy
     environment:
       - HEALENIUM_SERVICE=http://healenium:7878
+      - TEST_PLATFORM=selenium
+      - HLM_LOG_LEVEL=debug
       - SPRING_POSTGRES_DB_HOST=postgres-db
       - SPRING_POSTGRES_DB=healenium
       - SPRING_POSTGRES_USER=healenium_user
@@ -151,18 +164,18 @@ services:
     networks:
       - healenium
 
-#  edge:
-#    image: selenium/node-edge:latest
-#    container_name: node-edge
-#    shm_size: 2gb
-#    depends_on:
-#      - selenium-hub
-#    environment:
-#      - SE_EVENT_BUS_HOST=selenium-hub
-#      - SE_EVENT_BUS_PUBLISH_PORT=4442
-#      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-#    networks:
-#      - healenium
+  #  edge:
+  #    image: selenium/node-edge:latest
+  #    container_name: node-edge
+  #    shm_size: 2gb
+  #    depends_on:
+  #      - selenium-hub
+  #    environment:
+  #      - SE_EVENT_BUS_HOST=selenium-hub
+  #      - SE_EVENT_BUS_PUBLISH_PORT=4442
+  #      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  #    networks:
+  #      - healenium
 
   firefox:
     image: selenium/node-firefox:latest
